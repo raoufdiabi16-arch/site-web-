@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>السلطة التشريعية | التعديل الدستوري 2020</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:      #0d0d0d;
+  --paper:    #f5f0e8;
+  --paper2:   #ede7d9;
+  --gold:     #b8960c;
+  --gold2:    #d4af37;
+  --teal:     #1a6b5e;
+  --teal2:    #22897a;
+  --rust:     #8b3a2a;
+  --muted:    #6b6256;
+  --border:   #c8bfaf;
+  --white:    #faf8f4;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Cairo',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  direction:rtl;
+  font-size:15px;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+
+/* ── GATE ── */
+#gate{
+  position:fixed;inset:0;z-index:999;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  padding:1rem;
+  transition:opacity .7s,visibility .7s;
+}
+#gate.gone{opacity:0;visibility:hidden;pointer-events:none;}
+
+.gate-inner{
+  width:min(500px,100%);
+  border:1px solid #333;
+  background:#111;
+  padding:2.5rem 2rem;
+  text-align:center;
+  position:relative;
+}
+.gate-inner::before,.gate-inner::after{
+  content:'';position:absolute;
+  width:40px;height:40px;
+  border-color:var(--gold);border-style:solid;
+}
+.gate-inner::before{top:-1px;right:-1px;border-width:2px 2px 0 0;}
+.gate-inner::after{bottom:-1px;left:-1px;border-width:0 0 2px 2px;}
+
+.gate-eyebrow{font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:1rem;text-transform:uppercase;}
+.gate-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:.4rem;line-height:1.3;}
+.gate-sub{font-size:.75rem;color:#888;margin-bottom:2rem;}
+.gate-divider{width:40px;height:1px;background:var(--gold);margin:.8rem auto;}
+
+.q-label{font-size:.6rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;}
+.q-num{font-size:.65rem;color:#666;margin-bottom:.5rem;}
+.q-text{font-size:.95rem;color:#e8e8e8;font-weight:600;line-height:1.55;margin-bottom:1.4rem;min-height:2.5rem;}
+.q-text.fade{opacity:0;transition:opacity .2s;}
+
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.8rem;}
+@media(max-width:400px){.opts{grid-template-columns:1fr;}}
+.opt{
+  background:#1a1a1a;border:1px solid #333;color:#ccc;
+  padding:.6rem .8rem;font-family:'Cairo',sans-serif;font-size:.82rem;
+  cursor:pointer;transition:all .15s;text-align:center;
+}
+.opt:hover:not(:disabled){border-color:var(--gold);color:var(--gold);}
+.opt.correct{background:#0d2b1a;border-color:#2d7a4a;color:#5dbb82;}
+.opt.wrong{background:#2b0d0d;border-color:#8b3a2a;color:#d97373;animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+.err-msg{font-size:.75rem;color:#d97373;min-height:1.2rem;margin-bottom:.4rem;}
+.prog{height:2px;background:#222;margin-top:1.2rem;}
+.prog-fill{height:100%;background:var(--gold);width:0%;transition:width .4s;}
+.gate-foot{font-size:.6rem;color:#444;margin-top:1.5rem;letter-spacing:.05em;}
+
+/* ── SITE ── */
+#site{opacity:0;transition:opacity .8s;}
+#site.show{opacity:1;}
+
+/* ── HEADER STRIPE ── */
+.top-stripe{
+  background:var(--ink);color:#aaa;
+  font-size:.65rem;letter-spacing:.12em;
+  text-align:center;padding:.4rem 1rem;
+  position:fixed;top:0;left:0;right:0;z-index:200;
+}
+.top-stripe strong{color:var(--gold2);}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:28px;left:0;right:0;z-index:190;
+  background:rgba(245,240,232,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--ink);
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:.7rem;flex-shrink:0;
+}
+.nav-seal{
+  width:34px;height:34px;
+  border:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:.9rem;font-weight:900;
+  color:var(--ink);
+}
+.nav-brand-txt{line-height:1.2;}
+.nav-brand-main{font-size:.82rem;font-weight:900;color:var(--ink);}
+.nav-brand-sub{font-size:.6rem;color:var(--muted);}
+.nav-links{display:flex;gap:.1rem;list-style:none;}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:.72rem;font-weight:600;
+  padding:.3rem .65rem;transition:all .15s;letter-spacing:.02em;
+}
+.nav-links a:hover{color:var(--ink);background:var(--paper2);}
+.nav-ham{display:none;background:none;border:1px solid var(--border);
+  padding:.3rem .5rem;font-size:.9rem;cursor:pointer;}
+
+.spacer{height:84px;}
+
+/* ── HERO ── */
+.hero{
+  background:var(--ink);
+  padding:5rem 2rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-canvas{position:absolute;inset:0;pointer-events:none;opacity:.35;}
+
+/* Ruled paper lines texture */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    transparent, transparent 28px,
+    rgba(184,150,12,.12) 28px, rgba(184,150,12,.12) 29px
+  );
+  pointer-events:none;
+}
+
+.hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1;}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.62rem;letter-spacing:.2em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:1.2rem;
+}
+.hero-kicker::before,.hero-kicker::after{content:'';width:24px;height:1px;background:var(--gold);}
+
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,5vw,3.8rem);
+  color:#fff;line-height:1.15;
+  margin-bottom:.5rem;
+}
+.hero-h1 em{color:var(--gold2);font-style:italic;}
+.hero-rule{width:60px;height:3px;background:var(--gold);margin:1.2rem 0;}
+
+/* Ishkaliya */
+.ishkaliya{
+  border-right:3px solid var(--gold);
+  padding:.9rem 1.2rem;
+  background:rgba(184,150,12,.06);
+  margin:1.5rem 0;max-width:700px;
+}
+.ish-label{font-size:.58rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:.3rem;}
+.ish-text{font-size:.92rem;color:rgba(255,255,255,.85);font-style:italic;line-height:1.6;}
+
+.hero-desc{font-size:.85rem;color:rgba(255,255,255,.5);font-weight:300;max-width:540px;line-height:1.9;margin-bottom:2rem;}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--gold);color:var(--ink);
+  padding:.65rem 1.5rem;font-weight:800;font-size:.8rem;
+  text-decoration:none;font-family:'Cairo',sans-serif;
+  border:none;cursor:pointer;transition:all .18s;letter-spacing:.03em;
+}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);}
+.btn-ghost{
+  background:transparent;color:rgba(255,255,255,.7);
+  padding:.65rem 1.5rem;font-weight:600;font-size:.8rem;
+  text-decoration:none;font-family:'Cairo',sans-serif;
+  border:1px solid rgba(255,255,255,.2);transition:all .18s;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ── PLAN STRIP ── */
+.plan-strip{
+  background:var(--ink);
+  border-top:1px solid #222;border-bottom:3px solid var(--gold);
+  padding:2rem;
+}
+.plan-strip-inner{max-width:960px;margin:0 auto;}
+.plan-strip-title{
+  font-size:.6rem;letter-spacing:.2em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:1.2rem;text-align:center;
+}
+.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#222;}
+@media(max-width:700px){.plan-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:400px){.plan-grid{grid-template-columns:1fr;}}
+.plan-cell{
+  background:var(--ink);padding:1.2rem 1rem;
+  transition:background .2s;
+}
+.plan-cell:hover{background:#151515;}
+.plan-tag{
+  font-size:.55rem;letter-spacing:.15em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:.5rem;
+}
+.plan-title{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:.4rem;line-height:1.4;}
+.plan-subs{display:flex;flex-direction:column;gap:.2rem;}
+.plan-sub{font-size:.7rem;color:#666;padding-right:.6rem;border-right:1px solid #333;}
+
+/* ── WRAPPER ── */
+.wrapper{max-width:960px;margin:0 auto;padding:0 2rem;}
+
+/* ── SECTION STYLES ── */
+section{padding:3.5rem 0;}
+section+section{border-top:1px solid var(--border);}
+
+.sec-eyebrow{
+  font-size:.58rem;letter-spacing:.2em;color:var(--teal);
+  text-transform:uppercase;margin-bottom:.5rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.sec-eyebrow::before{content:'';width:20px;height:1px;background:var(--teal);}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,2.5vw,2rem);
+  color:var(--ink);margin-bottom:.5rem;line-height:1.25;
+}
+.sec-desc{font-size:.84rem;color:var(--muted);font-weight:300;max-width:620px;line-height:1.9;margin-bottom:2rem;}
+
+/* ── INTRO CARDS ── */
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
+@media(max-width:580px){.intro-grid{grid-template-columns:1fr;}}
+.intro-card{
+  background:var(--white);padding:1.8rem;
+  border-top:3px solid transparent;transition:all .2s;
+}
+.intro-card:nth-child(1){border-top-color:var(--gold);}
+.intro-card:nth-child(2){border-top-color:var(--teal);}
+.intro-card:nth-child(3){border-top-color:var(--rust);}
+.intro-card:nth-child(4){border-top-color:var(--ink);}
+.intro-card:hover{background:var(--paper2);}
+.intro-n{
+  font-family:'Playfair Display',serif;font-size:2rem;
+  color:var(--border);font-weight:900;margin-bottom:.5rem;
+}
+.intro-title{font-size:.9rem;font-weight:800;color:var(--ink);margin-bottom:.4rem;}
+.intro-body{font-size:.8rem;color:var(--muted);line-height:1.85;font-weight:300;}
+
+/* ── ACCORDION ── */
+.chapter-label{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.7rem 1rem;
+  background:var(--ink);color:var(--gold);
+  font-size:.75rem;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;margin-bottom:.6rem;
+}
+.chapter-num{
+  width:22px;height:22px;border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:900;flex-shrink:0;
+}
+
+.acc{display:flex;flex-direction:column;gap:1px;background:var(--border);margin-bottom:1.2rem;}
+.acc-item{background:var(--white);}
+.acc-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.2rem;cursor:pointer;gap:1rem;user-select:none;
+  transition:background .15s;
+}
+.acc-head:hover{background:var(--paper);}
+.acc-head-r{display:flex;align-items:center;gap:.9rem;}
+.acc-num{
+  width:32px;height:32px;
+  background:var(--paper2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;
+  color:var(--muted);flex-shrink:0;border:1px solid var(--border);
+}
+.acc-item.open .acc-num{background:var(--ink);color:var(--gold);border-color:var(--ink);}
+.acc-title{font-size:.88rem;font-weight:800;color:var(--ink);}
+.acc-sub{font-size:.68rem;color:var(--muted);margin-top:.1rem;}
+.acc-arrow{
+  font-size:.7rem;color:var(--muted);
+  transition:transform .3s;flex-shrink:0;
+}
+.acc-item.open .acc-arrow{transform:rotate(180deg);color:var(--teal);}
+
+.acc-body{display:none;}
+.acc-item.open .acc-body{display:block;animation:fadeDown .25s ease;}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+.acc-inner{padding:1.2rem;border-top:1px solid var(--paper2);}
+
+/* Content boxes */
+.def-box{background:var(--paper2);border-right:3px solid var(--teal);padding:.9rem 1.1rem;margin-bottom:.9rem;}
+.def-label{font-size:.58rem;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:.25rem;}
+.def-text{font-size:.83rem;color:var(--ink);line-height:1.85;}
+
+.art-box{background:#fff9ee;border-right:3px solid var(--gold);padding:.9rem 1.1rem;margin:.8rem 0;}
+.art-label{font-size:.58rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:.25rem;}
+.art-text{font-size:.82rem;color:#5a4a00;line-height:1.85;font-style:italic;}
+
+.analysis-box{background:#f0f8f6;border-right:3px solid var(--teal2);padding:.9rem 1.1rem;margin:.8rem 0;}
+.analysis-label{font-size:.58rem;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:.25rem;}
+.analysis-text{font-size:.83rem;color:#0d2e28;line-height:1.9;}
+
+.debate-box{background:#fdf4f0;border-right:3px solid var(--rust);padding:.9rem 1.1rem;margin:.8rem 0;}
+.debate-label{font-size:.58rem;letter-spacing:.15em;color:var(--rust);text-transform:uppercase;margin-bottom:.25rem;}
+.debate-text{font-size:.83rem;color:#3a1008;line-height:1.9;}
+
+.pts{display:flex;flex-direction:column;gap:.35rem;margin:.7rem 0;}
+.pt{
+  display:flex;align-items:flex-start;gap:.6rem;flex-direction:row-reverse;
+  font-size:.82rem;padding:.5rem .8rem;background:var(--paper);line-height:1.7;
+}
+.pt::before{content:'—';color:var(--teal);font-weight:900;flex-shrink:0;margin-top:.1rem;}
+.pt strong{color:var(--teal);font-weight:700;}
+
+.badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;}
+.badge{
+  font-size:.68rem;font-weight:700;padding:.25rem .7rem;
+  border:1px solid;
+}
+.badge-gold{background:#fffbee;color:#7a5800;border-color:#e8d080;}
+.badge-teal{background:#f0f8f6;color:var(--teal);border-color:#a0d4c8;}
+.badge-rust{background:#fdf4f0;color:var(--rust);border-color:#e8c0b0;}
+
+/* ── CHART SECTION ── */
+.chart-section{background:var(--ink);}
+.chart-wrap{max-width:820px;margin:0 auto;padding:3rem 2rem;}
+.chart-title{font-size:.6rem;letter-spacing:.2em;color:var(--gold);text-align:center;text-transform:uppercase;margin-bottom:2.5rem;}
+.chart-root{
+  background:rgba(255,255,255,.06);border:1px solid #333;
+  padding:.8rem 2rem;text-align:center;
+  font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:0;
+}
+.chart-v{width:1px;height:28px;background:#444;margin:0 auto;}
+.chart-row{display:flex;gap:2rem;position:relative;justify-content:center;}
+.chart-row::before{content:'';position:absolute;top:0;right:20%;left:20%;height:1px;background:#333;}
+.chart-branch{display:flex;flex-direction:column;align-items:center;}
+.chart-branch::before{content:'';width:1px;height:22px;background:#444;}
+.chart-node{padding:.6rem 1.2rem;font-size:.8rem;font-weight:700;min-width:160px;text-align:center;}
+.node-gold{background:var(--gold);color:var(--ink);}
+.node-teal{background:var(--teal);color:#fff;}
+.chart-leaves{width:100%;display:flex;flex-direction:column;align-items:center;}
+.chart-leaf::before{content:'';width:1px;height:14px;background:#444;}
+.leaf-box{
+  background:rgba(255,255,255,.05);border:1px solid #2a2a2a;
+  color:#aaa;padding:.35rem .6rem;font-size:.72rem;text-align:center;width:100%;margin-bottom:0;
+}
+
+/* ── ANSWER ── */
+.answer-section{background:var(--paper2);}
+.answer-card{border:1px solid var(--border);background:var(--white);}
+.answer-head{
+  background:var(--ink);padding:1.1rem 1.4rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.answer-icon{color:var(--gold);font-size:1rem;}
+.answer-head-main{font-size:.88rem;font-weight:800;color:#fff;}
+.answer-head-sub{font-size:.68rem;color:#666;margin-top:.1rem;}
+.answer-body{padding:1.4rem;}
+.answer-para{font-size:.84rem;color:var(--ink);line-height:2;margin-bottom:.9rem;}
+.answer-para strong{color:var(--teal);font-weight:700;}
+.answer-conclusion{
+  border-right:4px solid var(--gold);
+  background:#fffbee;padding:1rem 1.2rem;
+  font-size:.83rem;color:#3a2a00;line-height:1.9;font-weight:500;
+}
+.answer-conclusion strong{color:var(--gold);}
+
+/* ── SOURCES ── */
+.src-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:1rem;}
+@media(max-width:580px){.src-grid{grid-template-columns:1fr;}}
+.src-item{
+  background:var(--white);padding:.8rem 1rem;
+  display:flex;gap:.7rem;flex-direction:row-reverse;
+  font-size:.78rem;color:var(--muted);line-height:1.6;
+}
+.src-n{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--border);flex-shrink:0;}
+
+/* ── TEAM ── */
+.team-section{background:var(--ink);}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#222;margin-top:1.5rem;}
+@media(max-width:680px){.team-grid{grid-template-columns:1fr 1fr;}}
+.tcard{
+  background:var(--ink);padding:1.5rem 1rem;text-align:center;
+  transition:background .2s;border-top:2px solid transparent;
+}
+.tcard:hover{background:#0d0d0d;}
+.tcard.main{border-top-color:var(--gold);}
+.tcard:not(.main){border-top-color:#333;}
+.tcard.main:hover{background:#100e00;}
+.tav{
+  width:46px;height:46px;margin:0 auto .7rem;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:900;
+  border:1px solid;
+}
+.tcard.main .tav{border-color:var(--gold);color:var(--gold);}
+.tcard:not(.main) .tav{border-color:#333;color:#555;}
+.tname{font-size:.8rem;font-weight:800;color:#ddd;margin-bottom:.2rem;}
+.trole{font-size:.65rem;color:#555;}
+.tdesigner{
+  display:inline-block;font-size:.6rem;color:var(--gold);
+  border:1px solid rgba(184,150,12,.3);padding:.1rem .5rem;margin-top:.35rem;
+}
+
+/* ── FOOTER ── */
+footer{background:#060606;color:#444;}
+.foot-main{
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;
+  padding:2.5rem 2rem;max-width:960px;margin:0 auto;
+}
+@media(max-width:600px){.foot-main{grid-template-columns:1fr;}}
+.foot-logo{
+  font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;
+  color:#fff;margin-bottom:.5rem;
+}
+.foot-desc{font-size:.72rem;line-height:1.8;color:#333;font-weight:300;}
+.foot-col-h{font-size:.55rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:.7rem;}
+.foot-links{display:flex;flex-direction:column;gap:.3rem;}
+.foot-links a{color:#333;text-decoration:none;font-size:.73rem;transition:color .15s;}
+.foot-links a:hover{color:var(--gold);}
+.foot-bottom{
+  background:#000;text-align:center;padding:.7rem 2rem;
+  font-size:.65rem;color:#333;display:flex;justify-content:space-between;
+  flex-wrap:wrap;gap:.3rem;align-items:center;
+}
+.foot-bottom strong{color:var(--gold2);}
+
+/* ── MOBILE ── */
+#mob-menu{
+  display:none;position:fixed;top:84px;right:0;left:0;
+  background:var(--white);border-bottom:2px solid var(--ink);
+  z-index:180;padding:1rem 1.5rem;flex-direction:column;gap:.2rem;
+}
+#mob-menu.open{display:flex;}
+#mob-menu a{
+  color:var(--ink);text-decoration:none;font-size:.85rem;font-weight:600;
+  padding:.5rem;border-bottom:1px solid var(--paper2);display:block;
+}
+
+@media(max-width:680px){
+  .nav-links{display:none;}
+  .nav-ham{display:block;}
+  .hero{padding:3rem 1.2rem 2.5rem;}
+  .wrapper{padding:0 1.2rem;}
+  section{padding:2.5rem 0;}
+  .plan-strip{padding:1.5rem 1.2rem;}
+  .foot-main{padding:1.8rem 1.2rem;}
+  .foot-bottom{padding:.6rem 1.2rem;font-size:.6rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- GATE -->
+<div id="gate">
+  <div class="gate-inner">
+    <div class="gate-eyebrow">كلية الحقوق &nbsp;—&nbsp; الجزائر</div>
+    <div class="gate-title">بوابة البحث الدستوري</div>
+    <div class="gate-divider"></div>
+    <div class="gate-sub">أجب عن سؤال واحد صحيح للدخول</div>
+    <div class="q-label" id="ql">سؤال دستوري</div>
+    <div class="q-num" id="qn">السؤال 1</div>
+    <div class="q-text" id="qt">ما اسم الغرفتين اللتين يتكون منهما البرلمان الجزائري؟</div>
+    <div class="opts" id="qo"></div>
+    <div class="err-msg" id="qe"></div>
+    <div class="prog"><div class="prog-fill" id="qp"></div></div>
+    <div class="gate-foot">تصميم وتطوير: <strong>Diabi Raouf</strong> &nbsp;—&nbsp; كلية الحقوق 2026</div>
+  </div>
+</div>
+
+<!-- SITE -->
+<div id="site">
+
+  <div class="top-stripe">
+    تصميم وتطوير: <strong>Diabi Raouf</strong> &nbsp;|&nbsp; كلية الحقوق &nbsp;|&nbsp; القانون الدستوري &nbsp;|&nbsp; 2025/2026
+  </div>
+
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-seal">ق</div>
+      <div class="nav-brand-txt">
+        <div class="nav-brand-main">البحث الدستوري</div>
+        <div class="nav-brand-sub">التعديل الدستوري 2020</div>
+      </div>
+    </div>
+    <button class="nav-ham" onclick="document.getElementById('mob-menu').classList.toggle('open')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#intro">مقدمة</a></li>
+      <li><a href="#mbhath1">المبحث الأول</a></li>
+      <li><a href="#mbhath2">المبحث الثاني</a></li>
+      <li><a href="#answer">الخاتمة</a></li>
+      <li><a href="#sources">المراجع</a></li>
+      <li><a href="#team">الفريق</a></li>
+    </ul>
+  </nav>
+  <div class="spacer"></div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    <div class="hero-inner">
+      <div class="hero-kicker">القانون الدستوري &nbsp;—&nbsp; السنة الجامعية 2025/2026</div>
+      <h1 class="hero-h1">السلطة التشريعية<br>في التعديل الدستوري <em>2020</em></h1>
+      <div class="hero-rule"></div>
+      <div class="ishkaliya">
+        <div class="ish-label">إشكالية البحث</div>
+        <div class="ish-text">هل جاء التعديل الدستوري لسنة 2020 ليُكرّس البرلمان سلطةً تشريعية مستقلة ومؤثرة فعلاً، أم أن هيمنة السلطة التنفيذية لا تزال تُقيّد اختصاصاته التشريعية والرقابية؟</div>
+      </div>
+      <p class="hero-desc">دراسة تحليلية نقدية في تشكيل البرلمان واختصاصاته التشريعية والرقابية في ضوء التعديل الدستوري الجزائري لسنة 2020.</p>
+      <div class="hero-btns">
+        <a href="#plan" class="btn-primary">خطة البحث</a>
+        <a href="#mbhath1" class="btn-ghost">ابدأ القراءة</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN STRIP -->
+  <div class="plan-strip" id="plan">
+    <div class="plan-strip-inner">
+      <div class="plan-strip-title">خطة البحث — هيكل منظم</div>
+      <div class="plan-grid">
+        <div class="plan-cell">
+          <div class="plan-tag">مقدمة</div>
+          <div class="plan-title">تأطير الإشكالية والمنهج</div>
+          <div class="plan-subs">
+            <div class="plan-sub">سياق التعديل 2020</div>
+            <div class="plan-sub">الإشكالية المركزية</div>
+            <div class="plan-sub">المنهج التحليلي النقدي</div>
+          </div>
+        </div>
+        <div class="plan-cell">
+          <div class="plan-tag">المبحث الأول</div>
+          <div class="plan-title">التشكيل والاختصاص التشريعي</div>
+          <div class="plan-subs">
+            <div class="plan-sub">ط1: تشكيل البرلمان</div>
+            <div class="plan-sub">ط2: الاختصاص الأصيل</div>
+            <div class="plan-sub">ط3: التشريع بأوامر</div>
+          </div>
+        </div>
+        <div class="plan-cell">
+          <div class="plan-tag">المبحث الثاني</div>
+          <div class="plan-title">الوظيفة الرقابية</div>
+          <div class="plan-subs">
+            <div class="plan-sub">ط1: آليات الرقابة</div>
+            <div class="plan-sub">ط2: ملتمس الرقابة</div>
+            <div class="plan-sub">ط3: تقييم نقدي</div>
+          </div>
+        </div>
+        <div class="plan-cell">
+          <div class="plan-tag">خاتمة</div>
+          <div class="plan-title">الإجابة والتقييم النهائي</div>
+          <div class="plan-subs">
+            <div class="plan-sub">تعزيز حقيقي أم رمزي؟</div>
+            <div class="plan-sub">الهوّة بين النص والتفعيل</div>
+            <div class="plan-sub">رهان الديمقراطية</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section id="intro">
+    <div class="wrapper">
+      <div class="sec-eyebrow">مقدمة البحث</div>
+      <h2 class="sec-title">لماذا هذا الموضوع؟</h2>
+      <p class="sec-desc">تأطير الإشكالية وبيان أهمية دراسة دور البرلمان في ظل التعديل الدستوري الجزائري لسنة 2020.</p>
+      <div class="intro-grid">
+        <div class="intro-card">
+          <div class="intro-n">01</div>
+          <div class="intro-title">سياق الحراك الشعبي 2019</div>
+          <div class="intro-body">جاء التعديل الدستوري في سياق سياسي استثنائي أفرزه الحراك الشعبي الأصيل منذ 22 فبراير 2019، مما أعطى لهذه التعديلات طابعاً إصلاحياً مُعلناً يستوجب الفحص والتحليل.</div>
+        </div>
+        <div class="intro-card">
+          <div class="intro-n">02</div>
+          <div class="intro-title">الرهان على التوازن بين السلطات</div>
+          <div class="intro-body">يُعدّ التوازن بين السلطات التشريعية والتنفيذية معياراً أساسياً لتقييم أي نظام ديمقراطي. والسؤال هو: أين تقع كفة البرلمان في هذا التوازن بعد 2020؟</div>
+        </div>
+        <div class="intro-card">
+          <div class="intro-n">03</div>
+          <div class="intro-title">المبادئ الدستورية للتشريع</div>
+          <div class="intro-body">يُجسّد البرلمان مبدأ السيادة الشعبية في الوظيفة التشريعية، غير أن اختصاصه لا يسير دائماً وفق مبدأ الفصل بين السلطات بل يخضع لمنطق التعاون والتوازن.</div>
+        </div>
+        <div class="intro-card">
+          <div class="intro-n">04</div>
+          <div class="intro-title">بين النص والممارسة</div>
+          <div class="intro-body">التحدي الحقيقي ليس في قراءة النص الدستوري بل في تقييم مدى ترجمته إلى ممارسة فعلية، وهو المحور النقدي الذي يُنظّم هذا البحث بأسره.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MBHATH 1 -->
+  <section id="mbhath1" style="background:var(--white);">
+    <div class="wrapper">
+      <div class="sec-eyebrow">المبحث الأول</div>
+      <h2 class="sec-title">البرلمان في دستور 2020 — التشكيل والاختصاص التشريعي</h2>
+      <p class="sec-desc">يتناول هذا المبحث بنية البرلمان الجزائري ومستجدات تشكيله، ثم اختصاصه التشريعي الأصيل وحدوده.</p>
+
+      <div class="chapter-label"><div class="chapter-num">1</div>المبحث الأول — الشروط العامة المشتركة لقبول الدعوى القضائية</div>
+
+      <div class="acc">
+
+        <!-- ط1 -->
+        <div class="acc-item">
+          <div class="acc-head" onclick="tog(this)">
+            <div class="acc-head-r">
+              <div class="acc-num">1</div>
+              <div>
+                <div class="acc-title">المطلب الأول: تشكيل البرلمان ومستجداته</div>
+                <div class="acc-sub">نظام الغرفتين — الأغلبية البرلمانية — م. 114، 121، 103</div>
+              </div>
+            </div>
+            <div class="acc-arrow">▼</div>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="def-box">
+              <div class="def-label">الفرع الأول — نظام الغرفتين</div>
+              <div class="def-text">أبقى التعديل الدستوري لسنة 2020 على نظام البرلمان ذي الغرفتين، مؤكداً أن كل غرفة تتمتع بالسيادة في إعداد القانون والتصويت عليه.</div>
+            </div>
+            <div class="art-box">
+              <div class="art-label">المادة 114</div>
+              <div class="art-text">يمارس السلطة التشريعية برلمان يتكوّن من غرفتين، وهما المجلس الشعبي الوطني ومجلس الأمة. كل غرفة من غرفتي البرلمان لها السيادة في إعداد القانون والتصويت عليه.</div>
+            </div>
+            <div class="def-box">
+              <div class="def-label">الفرع الثاني — طريقة التشكيل</div>
+              <div class="def-text">يُعيَّن ثلث أعضاء مجلس الأمة من قِبَل رئيس الجمهورية، مما يُثير جدلاً فقهياً حول استقلالية الغرفة الثانية.</div>
+            </div>
+            <div class="art-box">
+              <div class="art-label">المادة 121</div>
+              <div class="art-text">ينتخب أعضاء المجلس الشعبي الوطني عن طريق الاقتراع العام المباشر والسري. ينتخب ثلثا (2/3) أعضاء مجلس الأمة بالاقتراع غير المباشر بمقعدين عن كل ولاية. يعيّن رئيس الجمهورية الثلث (1/3) الآخر من بين الشخصيات والكفاءات الوطنية.</div>
+            </div>
+            <div class="analysis-box">
+              <div class="analysis-label">الفرع الثالث — مستجد الأغلبية البرلمانية (م. 103)</div>
+              <div class="analysis-text">كرّس دستور 2020 مبدأ الأغلبية البرلمانية بوصفه محدداً لطبيعة الحكومة؛ فإذا أسفرت الانتخابات عن أغلبية رئاسية قادها وزير أول، وإذا أسفرت عن أغلبية برلمانية قادها رئيس حكومة. وهذا تقنين لفكرة التعايش السياسي المحتمل، غير أنه يبقى نظرياً ما لم تُفرز الانتخابات أغلبية مستقلة حقاً.</div>
+            </div>
+            <div class="badges">
+              <span class="badge badge-gold">م. 114 — نظام الغرفتين</span>
+              <span class="badge badge-teal">م. 121 — طريقة التشكيل</span>
+              <span class="badge badge-rust">م. 103 — الأغلبية البرلمانية</span>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- ط2 -->
+        <div class="acc-item">
+          <div class="acc-head" onclick="tog(this)">
+            <div class="acc-head-r">
+              <div class="acc-num">2</div>
+              <div>
+                <div class="acc-title">المطلب الثاني: الاختصاص التشريعي الأصيل للبرلمان</div>
+                <div class="acc-sub">المبادرة التشريعية — مسار إقرار القانون — م. 143</div>
+              </div>
+            </div>
+            <div class="acc-arrow">▼</div>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="art-box">
+              <div class="art-label">المادة 143 — المبادرة التشريعية</div>
+              <div class="art-text">لكل من الوزير الأول أو رئيس الحكومة والنواب وأعضاء مجلس الأمة حق المبادرة بالقوانين. تعرض مشاريع القوانين على مجلس الوزراء بعد رأي مجلس الدولة ثم يودعها الوزير الأول لدى مكتب المجلس الشعبي الوطني أو مكتب مجلس الأمة.</div>
+            </div>
+            <div class="analysis-box">
+              <div class="analysis-label">تحليل — ازدواجية المبادرة</div>
+              <div class="analysis-text">تتضح الأسبقية الإجرائية للمبادرة الحكومية؛ إذ تمر بمسار منضبط عبر مجلس الوزراء ومجلس الدولة قبل إيداعها، مما يمنحها ثقلاً عملياً. في المقابل تظل المبادرة البرلمانية رهينة شرط النصاب العددي مما يُضعف التشريع المستقل للنواب.</div>
+            </div>
+            <div class="def-box">
+              <div class="def-label">مسار التشريع الثنائي الغرفة</div>
+              <div class="def-text">يمر كل مشروع أو اقتراح قانون عبر كلتا الغرفتين للمناقشة والتصويت على التوالي حتى تتم المصادقة عليه. هذا المسار يُعدّ ضمانة لجودة التشريع نظرياً، غير أنه عملياً يُرجّح المشاريع الحكومية ذات الأولوية على اقتراحات النواب.</div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- ط3 -->
+        <div class="acc-item">
+          <div class="acc-head" onclick="tog(this)">
+            <div class="acc-head-r">
+              <div class="acc-num">3</div>
+              <div>
+                <div class="acc-title">المطلب الثالث: التشريع بأوامر رئاسية</div>
+                <div class="acc-sub">حدود الاختصاص — م. 142 وضوابطها</div>
+              </div>
+            </div>
+            <div class="acc-arrow">▼</div>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="art-box">
+              <div class="art-label">المادة 142 — التشريع بأوامر</div>
+              <div class="art-text">لرئيس الجمهورية أن يشرّع بأوامر في مسائل عاجلة في حالة شغور المجلس الشعبي الوطني أو خلال العطل البرلمانية، بعد رأي مجلس الدولة. يُخطر رئيس الجمهورية وجوباً المحكمة الدستورية بشأن دستوريتها في أجل أقصاه عشرة أيام. تُعرض على البرلمان في بداية الدورة القادمة، وتُعدّ لاغية الأوامر التي لا يوافق عليها البرلمان.</div>
+            </div>
+            <div class="analysis-box">
+              <div class="analysis-label">موقف الفقه المؤيد</div>
+              <div class="analysis-text">ذهب فريق من الفقه إلى أن دستور 2020 قيّد صلاحية التشريع بأوامر بإخضاعها لرقابة المحكمة الدستورية المسبقة والمصادقة البرلمانية اللاحقة، مع الحكم بلاغيتها عند الرفض.</div>
+            </div>
+            <div class="debate-box">
+              <div class="debate-label">الاتجاه النقدي</div>
+              <div class="debate-text">يرى الاتجاه المعارض أن إمكانية التشريع بأوامر خلال العطل البرلمانية — وهي فترات دورية منتظمة — تبقى ثغرةً تُمكّن السلطة التنفيذية من التحايل على أسبقية البرلمان، ولا سيما أن الموافقة البرلمانية اللاحقة قد تكون محسومة بحكم الأغلبية الموالية.</div>
+            </div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MBHATH 2 -->
+  <section id="mbhath2">
+    <div class="wrapper">
+      <div class="sec-eyebrow">المبحث الثاني</div>
+      <h2 class="sec-title">الوظيفة الرقابية للبرلمان وتقييمها النقدي</h2>
+      <p class="sec-desc">يتناول هذا المبحث آليات رقابة البرلمان على الحكومة في دستور 2020 مع تقييم نقدي لمدى فاعليتها الفعلية.</p>
+
+      <div class="chapter-label"><div class="chapter-num">2</div>المبحث الثاني — الوظيفة الرقابية</div>
+
+      <div class="acc">
+
+        <!-- ط1 -->
+        <div class="acc-item">
+          <div class="acc-head" onclick="tog(this)">
+            <div class="acc-head-r">
+              <div class="acc-num">1</div>
+              <div>
+                <div class="acc-title">المطلب الأول: آليات الرقابة البرلمانية</div>
+                <div class="acc-sub">الأسئلة — لجان التحقيق — م. 158، 159</div>
+              </div>
+            </div>
+            <div class="acc-arrow">▼</div>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="art-box">
+              <div class="art-label">المادة 158 — الأسئلة البرلمانية</div>
+              <div class="art-text">يمكن أعضاء البرلمان توجيه أي سؤال شفوي أو كتابي إلى أي عضو في الحكومة. يكون الجواب عن السؤال الكتابي كتابياً خلال أجل أقصاه ثلاثون (30) يوماً. يعقد كل من المجلسين بالتداول جلسة أسبوعية تخصص لأجوبة الحكومة على الأسئلة الشفوية.</div>
+            </div>
+            <div class="art-box">
+              <div class="art-label">المادة 159 — لجان التحقيق</div>
+              <div class="art-text">يمكن كل غرفة من البرلمان، في إطار اختصاصاتها، أن تُنشئ في أي وقت لجان تحقيق في قضايا ذات مصلحة عامة. لا يمكن إنشاء لجنة تحقيق بخصوص وقائع تكون محل إجراء قضائي.</div>
+            </div>
+            <div class="analysis-box">
+              <div class="analysis-label">تقييم — بين النص والواقع</div>
+              <div class="analysis-text">تُشكّل الجلسة الأسبوعية إضافةً نوعية تُكرّس الحضور الرقابي المنتظم. غير أن لجان التحقيق — رغم أهميتها الدستورية — لم تُوظَّف إلا مرةً واحدة سنة 1997 ولم تُنشر نتائجها، مما يعكس هشاشة هذه الآلية عند مواجهة مقتضيات السلطة التنفيذية.</div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- ط2 -->
+        <div class="acc-item">
+          <div class="acc-head" onclick="tog(this)">
+            <div class="acc-head-r">
+              <div class="acc-num">2</div>
+              <div>
+                <div class="acc-title">المطلب الثاني: ملتمس الرقابة وإسقاط الحكومة</div>
+                <div class="acc-sub">م. 161، 162، 151 — توازن غير متكافئ</div>
+              </div>
+            </div>
+            <div class="acc-arrow">▼</div>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="art-box">
+              <div class="art-label">المادة 161 — شروط الملتمس</div>
+              <div class="art-text">يمكن المجلس الشعبي الوطني لدى مناقشة بيان السياسة العامة أو إثر استجواب أن يصوّت على ملتمس رقابة ينصبّ على مسؤولية الحكومة. لا يُقبل هذا الملتمس إلا إذا وقّعه سُبع (1/7) عدد نواب المجلس على الأقل.</div>
+            </div>
+            <div class="art-box">
+              <div class="art-label">المادة 162 — أثر الملتمس</div>
+              <div class="art-text">تتم الموافقة على ملتمس الرقابة بتصويت أغلبية ثلثي (2/3) النواب. لا يتم التصويت إلا بعد ثلاثة (3) أيام من إيداعه. إذا صادق المجلس على الملتمس، يقدّم الوزير الأول أو رئيس الحكومة استقالة الحكومة إلى رئيس الجمهورية.</div>
+            </div>
+            <div class="debate-box">
+              <div class="debate-label">المادة 151 — حق الحل في المقابل</div>
+              <div class="debate-text">يمكن رئيس الجمهورية أن يقرر حل المجلس الشعبي الوطني أو إجراء انتخابات تشريعية قبل أوانها بعد استشارة رؤساء الغرفتين والمحكمة الدستورية والوزير الأول أو رئيس الحكومة. وهذا ما يخلق لا تكافؤاً بنيوياً: البرلمان يُسقط الحكومة بأغلبية الثلثين، والرئيس يحلّ البرلمان بقرار انفرادي.</div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- ط3 -->
+        <div class="acc-item">
+          <div class="acc-head" onclick="tog(this)">
+            <div class="acc-head-r">
+              <div class="acc-num">3</div>
+              <div>
+                <div class="acc-title">المطلب الثالث: تقييم نقدي</div>
+                <div class="acc-sub">تعزيز حقيقي أم رمزي؟ — مواطن القوة والضعف</div>
+              </div>
+            </div>
+            <div class="acc-arrow">▼</div>
+          </div>
+          <div class="acc-body"><div class="acc-inner">
+            <div class="analysis-box">
+              <div class="analysis-label">مواطن التعزيز الفعلي</div>
+              <div class="analysis-text">لا يمكن إنكار جملة من الإضافات: الاعتراف الصريح بالمعارضة البرلمانية، تقييد التشريع بأوامر وإخضاعه لرقابة المحكمة الدستورية، تكريس مبدأ الأغلبية البرلمانية، الجلسة الأسبوعية للأسئلة الشفوية، الحكم بلاغية الأوامر غير المُصادَق عليها.</div>
+            </div>
+            <div class="pts">
+              <div class="pt"><strong>هيمنة المبادرة الحكومية:</strong> مشاريع القوانين الحكومية تمثل غالبية القوانين المُصادَق عليها.</div>
+              <div class="pt"><strong>تعيين ثلث مجلس الأمة:</strong> يُضعف استقلالية الغرفة الثانية ويُكرّس تبعيتها للسلطة التنفيذية.</div>
+              <div class="pt"><strong>غياب التفعيل التاريخي:</strong> لم يُوظَّف ملتمس الرقابة ولا لجان التحقيق بشكل مؤثر قط.</div>
+              <div class="pt"><strong>صرامة شروط الملتمس:</strong> أغلبية الثلثين تجعله أداةً نظرية معطّلة عملياً.</div>
+              <div class="pt"><strong>لا تكافؤ صلاحية الحل:</strong> الرئيس يحلّ البرلمان بشروط أيسر مما يملكه البرلمان ضد الحكومة.</div>
+            </div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CHART -->
+  <div class="chart-section">
+    <div class="chart-wrap">
+      <div class="chart-title">هيكل السلطة التشريعية — دستور 2020</div>
+      <div class="chart-root">البرلمان الجزائري — السلطة التشريعية</div>
+      <div class="chart-v"></div>
+      <div class="chart-row">
+        <div class="chart-branch">
+          <div class="chart-node node-gold">المجلس الشعبي الوطني</div>
+          <div class="chart-leaves">
+            <div class="chart-leaf"><div class="leaf-box">462 نائب — انتخاب مباشر</div></div>
+            <div class="chart-leaf"><div class="leaf-box">المبادرة التشريعية</div></div>
+            <div class="chart-leaf"><div class="leaf-box">ملتمس الرقابة</div></div>
+          </div>
+        </div>
+        <div class="chart-branch">
+          <div class="chart-node node-teal">مجلس الأمة</div>
+          <div class="chart-leaves">
+            <div class="chart-leaf"><div class="leaf-box">ثلثان بانتخاب غير مباشر</div></div>
+            <div class="chart-leaf"><div class="leaf-box">ثلث بتعيين رئاسي</div></div>
+            <div class="chart-leaf"><div class="leaf-box">المصادقة على القوانين</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANSWER -->
+  <div class="answer-section" id="answer">
+    <div class="wrapper" style="padding-top:3rem;padding-bottom:3rem;">
+      <div class="sec-eyebrow">الخاتمة</div>
+      <h2 class="sec-title">الإجابة عن الإشكالية</h2>
+      <div class="answer-card">
+        <div class="answer-head">
+          <div>
+            <div class="answer-head-main">تعزيز حقيقي أم رمزي؟ — الموقف التحليلي النهائي</div>
+            <div class="answer-head-sub">الجواب عن: هل كرّس دستور 2020 استقلالية البرلمان فعلاً؟</div>
+          </div>
+        </div>
+        <div class="answer-body">
+          <p class="answer-para">جاء التعديل الدستوري لسنة 2020 بمستجدات تُعلي نظرياً من شأن السلطة التشريعية وتُوسّع هامشها في النظام السياسي الجزائري. فعلى صعيد التشريع، أُقرّ حق المبادرة البرلمانية، وقُيِّد التشريع بأوامر وأُخضع لرقابة المحكمة الدستورية، وكُرِّس مبدأ الأغلبية البرلمانية. وعلى صعيد الرقابة، نُظِّمت الأسئلة البرلمانية وأُبقي على لجان التحقيق وملتمس الرقابة.</p>
+          <p class="answer-para">غير أن المسافة بين <strong>النص الدستوري</strong> و<strong>الممارسة الفعلية</strong> لا تزال واسعة. فشرط أغلبية الثلثين لملتمس الرقابة، وتعيين ثلث مجلس الأمة، وهيمنة المبادرة الحكومية، ولا تكافؤ صلاحية الحل — كلها عوامل تُبقي السلطة التنفيذية في موقع الريادة.</p>
+          <div class="answer-conclusion">
+            <strong>الموقف التحليلي النهائي:</strong> دستور 2020 <strong>منح البرلمان أدواتٍ</strong> تشريعية ورقابية أوسع نسبياً من ذي قبل، لكنه <strong>لم يُرسّخ استقلاليته الفعلية</strong> في مواجهة السلطة التنفيذية. والهوّة بين الأداة والتفعيل هي رهان الديمقراطية الجزائرية، ولن تُجيب عنها النصوص وحدها بل الممارسة السياسية الناضجة والإرادة المؤسسية الحقيقية.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <div class="wrapper">
+      <div class="sec-eyebrow">المراجع</div>
+      <h2 class="sec-title">قائمة المراجع المعتمدة</h2>
+      <div class="src-grid">
+        <div class="src-item"><span class="src-n">01</span>دستور الجزائر 2020، الجريدة الرسمية العدد 82، 30 ديسمبر 2020.</div>
+        <div class="src-item"><span class="src-n">02</span>سعيد بوشعير، النظام السياسي الجزائري، ديوان المطبوعات الجامعية.</div>
+        <div class="src-item"><span class="src-n">03</span>عمار عباس، القانون الدستوري والنظم السياسية المقارنة، دار هومة.</div>
+        <div class="src-item"><span class="src-n">04</span>فوزي أوصديق، الوافي في شرح القانون الدستوري الجزائري، ديوان المطبوعات الجامعية.</div>
+        <div class="src-item"><span class="src-n">05</span>إدريس بوكرا، تطور المؤسسات الدستورية في الجزائر، منشورات بغدادي.</div>
+        <div class="src-item"><span class="src-n">06</span>عبد الله بوقفة، أساليب ممارسة السلطة في النظام السياسي الجزائري، دار هومة.</div>
+        <div class="src-item"><span class="src-n">07</span>Maurice Duverger, Institutions politiques et droit constitutionnel, PUF, Paris.</div>
+        <div class="src-item"><span class="src-n">08</span>Georges Vedel, Droit constitutionnel, Sirey, Paris.</div>
+        <div class="src-item"><span class="src-n">09</span>Jean Gicquel, Droit constitutionnel et institutions politiques, LGDJ, Paris.</div>
+        <div class="src-item"><span class="src-n">10</span>مقال: السلطة التشريعية في النظام الجزائري من خلال تعديل 2020، ASJP.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <div class="team-section">
+    <div class="wrapper" style="padding:3rem 2rem;">
+      <div class="sec-eyebrow" style="color:var(--gold);"><span style="background:var(--gold);"></span>الفريق البحثي</div>
+      <h2 class="sec-title" style="color:#fff;">أعضاء الفريق</h2>
+      <div class="team-grid">
+        <div class="tcard main">
+          <div class="tav">DR</div>
+          <div class="tname">Diabi Raouf</div>
+          <div class="trole">باحث — كلية الحقوق</div>
+          <div class="tdesigner">مصمم الموقع</div>
+        </div>
+        <div class="tcard">
+          <div class="tav">MB</div>
+          <div class="tname">Mehdi Mensouri</div>
+          <div class="trole">باحث — كلية الحقوق</div>
+        </div>
+        <div class="tcard">
+          <div class="tav">BA</div>
+          <div class="tname">Boudour Abdelkahar</div>
+          <div class="trole">باحث — كلية الحقوق</div>
+        </div>
+        <div class="tcard">
+          <div class="tav">AB</div>
+          <div class="tname">Adem Bahlouli</div>
+          <div class="trole">باحث — كلية الحقوق</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-main">
+      <div>
+        <div class="foot-logo">البحث الدستوري</div>
+        <p class="foot-desc">بحث أكاديمي في مادة القانون الدستوري حول السلطة التشريعية في التعديل الدستوري الجزائري لسنة 2020 — كلية الحقوق — السنة الجامعية 2025/2026.</p>
+      </div>
+      <div>
+        <div class="foot-col-h">أقسام الموقع</div>
+        <div class="foot-links">
+          <a href="#intro">مقدمة</a>
+          <a href="#mbhath1">المبحث الأول</a>
+          <a href="#mbhath2">المبحث الثاني</a>
+          <a href="#answer">الخاتمة</a>
+          <a href="#team">الفريق</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-col-h">المصمم</div>
+        <div class="foot-links">
+          <a href="#">Diabi Raouf</a>
+          <a href="#">كلية الحقوق — الجزائر</a>
+          <a href="#">2026</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>جميع الحقوق محفوظة — كلية الحقوق، الجزائر 2026</span>
+      <span>تصميم وتطوير: <strong>Diabi Raouf</strong></span>
+    </div>
+  </footer>
+
+  <!-- MOB MENU -->
+  <div id="mob-menu">
+    <a href="#intro"    onclick="closeMob()">مقدمة</a>
+    <a href="#mbhath1"  onclick="closeMob()">المبحث الأول</a>
+    <a href="#mbhath2"  onclick="closeMob()">المبحث الثاني</a>
+    <a href="#answer"   onclick="closeMob()">الخاتمة</a>
+    <a href="#sources"  onclick="closeMob()">المراجع</a>
+    <a href="#team"     onclick="closeMob()">الفريق</a>
+  </div>
+
+</div><!-- end #site -->
+
+<script>
+/* ── GATE ── */
+const legalQs = [
+  {q:"ما اسم الغرفتين اللتين يتكون منهما البرلمان الجزائري؟",opts:["مجلس الشيوخ والبرلمان","المجلس الشعبي الوطني ومجلس الأمة","مجلس النواب ومجلس الشعب","المجلس التشريعي ومجلس الدولة"],a:"المجلس الشعبي الوطني ومجلس الأمة",t:"دستوري"},
+  {q:"في أي سنة صدر التعديل الدستوري الأخير في الجزائر؟",opts:["2016","2019","2020","2022"],a:"2020",t:"دستوري"},
+  {q:"ما الأداة الدستورية التي تُتيح للبرلمان إسقاط الحكومة؟",opts:["حق الاعتراض","ملتمس الرقابة","الاستجواب","لجنة التحقيق"],a:"ملتمس الرقابة",t:"دستوري"},
+  {q:"من يعيّن الثلث الأخير من أعضاء مجلس الأمة؟",opts:["رئيس الحكومة","رئيس الجمهورية","رئيس المجلس الشعبي","المحكمة الدستورية"],a:"رئيس الجمهورية",t:"دستوري"},
+  {q:"كم يوماً أجل الجواب على السؤال البرلماني الكتابي؟",opts:["15 يوماً","30 يوماً","45 يوماً","60 يوماً"],a:"30 يوماً",t:"دستوري"},
+];
+const easyQs = [
+  {q:"كم عدد ولايات الجزائر حالياً؟",opts:["48","58","69","75"],a:"69",t:"جغرافيا"},
+  {q:"في أي سنة استقلت الجزائر؟",opts:["1958","1960","1962","1965"],a:"1962",t:"تاريخ"},
+  {q:"ما عاصمة الجزائر؟",opts:["وهران","قسنطينة","الجزائر","سطيف"],a:"الجزائر",t:"جغرافيا"},
+  {q:"ما اللغة الرسمية للجزائر؟",opts:["الفرنسية","الأمازيغية","العربية","العربية والأمازيغية"],a:"العربية",t:"عام"},
+];
+
+let qi=0,wrongs=0,useLegal=true,queue=[...legalQs];
+
+function renderQ(){
+  const q=queue[qi%queue.length];
+  const qt=document.getElementById('qt');
+  qt.classList.add('fade');
+  setTimeout(()=>{
+    document.getElementById('ql').textContent='سؤال '+q.t;
+    document.getElementById('qn').textContent='السؤال '+(qi+1);
+    qt.textContent=q.q; qt.classList.remove('fade');
+    const grid=document.getElementById('qo'); grid.innerHTML='';
+    q.opts.forEach(o=>{
+      const b=document.createElement('button');
+      b.className='opt'; b.textContent=o;
+      b.onclick=()=>answer(o,q.a,b);
+      grid.appendChild(b);
+    });
+    document.getElementById('qe').textContent='';
+  },220);
+}
+
+function answer(val,correct,btn){
+  document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+  if(val===correct){
+    btn.classList.add('correct');
+    document.getElementById('qp').style.width='100%';
+    setTimeout(()=>{
+      document.getElementById('gate').classList.add('gone');
+      document.getElementById('site').classList.add('show');
+    },650);
+  } else {
+    wrongs++; btn.classList.add('wrong');
+    document.getElementById('qe').textContent='خطأ — الصواب: '+correct;
+    document.getElementById('qp').style.width=Math.min(wrongs*18,85)+'%';
+    if(wrongs>=2&&useLegal){useLegal=false;queue=[...easyQs];qi=0;}
+    else qi++;
+    setTimeout(renderQ,2000);
+  }
+}
+renderQ();
+
+/* ── ACCORDION ── */
+function tog(head){
+  const item=head.parentElement;
+  const body=item.querySelector('.acc-body');
+  const arrow=head.querySelector('.acc-arrow');
+  const isOpen=item.classList.contains('open');
+  const scrollY=window.scrollY;
+  if(isOpen){
+    item.classList.remove('open');
+    body.style.display='none';
+    arrow.textContent='▼';
+    requestAnimationFrame(()=>window.scrollTo(0,scrollY));
+  } else {
+    item.classList.add('open');
+    body.style.display='block';
+    arrow.textContent='▲';
+    requestAnimationFrame(()=>window.scrollTo(0,scrollY));
+  }
+}
+
+/* ── CANVAS ── */
+(function(){
+  const c=document.getElementById('hero-canvas');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  let W,H,t=0;
+  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
+  resize(); window.addEventListener('resize',resize);
+  // Floating circles / dots
+  const dots=Array.from({length:24},()=>({
+    x:Math.random(),y:Math.random(),
+    r:Math.random()*60+20,
+    speed:Math.random()*.003+.001,
+    phase:Math.random()*Math.PI*2,
+    col:Math.random()>.5?'rgba(184,150,12,':'rgba(26,107,94,'
+  }));
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=.008;
+    dots.forEach(d=>{
+      const x=(d.x+Math.sin(t*d.speed+d.phase)*.06)*W;
+      const y=(d.y+Math.cos(t*d.speed*1.3+d.phase)*.04)*H;
+      const a=.04+.02*Math.sin(t+d.phase);
+      ctx.beginPath();
+      ctx.arc(x,y,d.r,0,Math.PI*2);
+      ctx.strokeStyle=d.col+a+')';
+      ctx.lineWidth=.8;
+      ctx.stroke();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const el=document.querySelector(a.getAttribute('href'));
+    if(el)el.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ── MOBILE MENU ── */
+function closeMob(){document.getElementById('mob-menu').classList.remove('open');}
+</script>
+</body>
+</html>
