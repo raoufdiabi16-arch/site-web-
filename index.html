@@ -1,1113 +1,763 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>السلطة التشريعية | التعديل الدستوري 2020</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>النظام القانوني لأمناء الضبط</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap">
 <style>
+/* Layout: editorial and quiet. White page, hairline rules instead of boxes, large serif headings, text tabs with a thin underline, one small glass navigation pill with a draggable lens. Blue is the only accent. RTL, light only by design. */
 :root {
-  /* اللوحة الجديدة - أزرق سماوي نقي وهادئ */
-  --ink:        #1e293b;      /* أزرق داكن جداً للنصوص */
-  --paper:      #f0f9ff;      /* أزرق فاتح جداً (سماء فاتحة) */
-  --paper2:     #e6f3fc;      /* درجة أفتح للخلفيات */
-  --gold:       #0ea5e9;      /* أزرق سماوي متوسط (العناصر المهمة) */
-  --gold2:      #38bdf8;      /* أزرق سماوي فاتح */
-  --teal:       #0284c7;      /* أزرق سماوي غامق */
-  --teal2:      #7dd3fc;      /* أزرق سماوي فاتح جداً */
-  --rust:       #94a3b8;      /* رمادي مزرق فاتح بدل الصدئ */
-  --muted:      #475569;      /* رمادي مزرق للنصوص الثانوية */
-  --border:     #b9e2fa;      /* أزرق فاتح جداً للحدود */
-  --white:      #ffffff;      /* أبيض نقي */
-  --accent:     #0284c7;      /* أزرق سماوي غامق */
-  --accent-light: #d9f0fc;    /* أزرق سماوي فاتح جداً للخلفيات */
-  --accent-dark: #0369a1;     /* أزرق سماوي داكن للتباين */
+  color-scheme: light;
+  --ink: #0E2744;
+  --mut: #5B7390;
+  --ac: #1D6AD0;
+  --deep: #0B2E5C;
+  --g1: #F5F8FC;
+  --g2: #EAF1F9;
+  --ln: rgba(14, 39, 68, .12);
+  --se: "Amiri", "Noto Naskh Arabic", "Traditional Arabic", serif;
+  --sa: "Tajawal", "Segoe UI", Tahoma, sans-serif;
+  --bar-h: 3.5rem;
 }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-
-html{scroll-behavior:smooth;}
-
-body{
-  font-family:'Cairo',sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-  direction:rtl;
-  font-size:15px;
-  line-height:1.8;
-  overflow-x:hidden;
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 7.5rem; background: #FFFFFF; }
+body {
+  background: #FFFFFF; color: var(--ink);
+  font-family: var(--sa); font-size: 17px; line-height: 1.95; font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  padding-block: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 50; background: #FFFFFF; }
+.wrap { max-width: 1100px; margin-inline: auto; }
+h1, h2, h3, h4 { margin: 0; font-weight: 700; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--se); line-height: 1.4; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ac); outline-offset: 3px; border-radius: 4px; }
 
-/* ── GATE (بوابة الدخول) ── */
-#gate{
-  position:fixed;inset:0;z-index:999;
-  background:var(--ink);
-  display:flex;align-items:center;justify-content:center;
-  padding:1rem;
-  transition:opacity .7s,visibility .7s;
+/* top bar */
+.topbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 60; height: var(--bar-h);
+  background: #FFFFFF; border-bottom: 1px solid var(--ln);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-#gate.gone{opacity:0;visibility:hidden;pointer-events:none;}
+.topbar-in { max-width: 1100px; height: 100%; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.brand { font-family: var(--se); font-weight: 700; font-size: 1.3rem; color: var(--deep); white-space: nowrap; }
+.brand-sub { font-size: .85rem; color: var(--mut); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 
-.gate-inner{
-  width:min(500px,100%);
-  border:1px solid var(--gold2);
-  background:var(--white);
-  padding:2.5rem 2rem;
-  text-align:center;
-  position:relative;
-  border-radius: 16px;
-  box-shadow: 0 20px 35px -8px rgba(0,0,0,0.15);
+/* glass navigation under the top bar */
+.gwrap { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--bar-h)); z-index: 55; padding-block: .45rem; pointer-events: none; }
+.gnav { pointer-events: auto; position: relative; margin-inline: auto; width: min(100%, 25rem); height: 2.6rem; border-radius: 999px; }
+.gbg {
+  position: absolute; inset: 0; border-radius: inherit;
+  background: rgba(255, 255, 255, .58);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8); backdrop-filter: blur(20px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, .9);
+  box-shadow: 0 0 0 1px rgba(14, 39, 68, .08), 0 6px 22px rgba(14, 39, 68, .09), inset 0 1px 0 #fff;
 }
-.gate-inner::before,.gate-inner::after{
-  content:'';position:absolute;
-  width:40px;height:40px;
-  border-color:var(--gold);border-style:solid;
+.gtrack { position: relative; z-index: 2; height: 100%; display: flex; padding: 3px; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.gnav.drag .gtrack { cursor: grabbing; }
+.gtab {
+  position: relative; z-index: 3; flex: 1 1 0; min-width: 0; display: grid; place-items: center;
+  text-decoration: none; color: var(--mut); font-family: var(--sa); font-weight: 500; font-size: .8rem;
+  white-space: nowrap; border-radius: 999px; transition: color .25s; -webkit-tap-highlight-color: transparent; line-height: 1.4;
 }
-.gate-inner::before{top:-1px;right:-1px;border-width:2px 2px 0 0; border-radius: 0 12px 0 0;}
-.gate-inner::after{bottom:-1px;left:-1px;border-width:0 0 2px 2px; border-radius: 0 0 0 12px;}
-
-.gate-eyebrow{font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:1rem;text-transform:uppercase;}
-.gate-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--ink);margin-bottom:.4rem;line-height:1.3;}
-.gate-sub{font-size:.75rem;color:var(--muted);margin-bottom:2rem;}
-.gate-divider{width:40px;height:2px;background:var(--gold);margin:.8rem auto; border-radius: 2px;}
-
-.q-label{font-size:.6rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;}
-.q-num{font-size:.65rem;color:var(--muted);margin-bottom:.5rem;}
-.q-text{font-size:.95rem;color:var(--ink);font-weight:600;line-height:1.55;margin-bottom:1.4rem;min-height:2.5rem;}
-.q-text.fade{opacity:0;transition:opacity .2s;}
-
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.8rem;}
-@media(max-width:400px){.opts{grid-template-columns:1fr;}}
-.opt{
-  background:var(--paper2);border:1px solid var(--border);color:var(--ink);
-  padding:.6rem .8rem;font-family:'Cairo',sans-serif;font-size:.82rem;
-  cursor:pointer;transition:all .15s;text-align:center;
-  border-radius: 12px;
+.gtab .s { display: none; }
+.gtab.hot { color: var(--ink); }
+.lens { position: absolute; z-index: 2; top: 3px; bottom: 3px; left: 0; width: 0; pointer-events: none; will-change: transform; transform: translate3d(var(--x, 0px), 0, 0); transition: transform .6s cubic-bezier(.32, .72, 0, 1), width .4s cubic-bezier(.32, .72, 0, 1); }
+.gnav.drag .lens { transition: transform .1s linear, width .3s ease; }
+.lens-in {
+  position: absolute; inset: 0; border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .34), rgba(120, 175, 245, .1));
+  -webkit-backdrop-filter: blur(2px) saturate(1.6) brightness(1.03); backdrop-filter: blur(2px) saturate(1.6) brightness(1.03);
+  border: 1px solid rgba(255, 255, 255, .9);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .9), inset 0 -1px 3px rgba(29, 106, 208, .16), 0 0 0 .5px rgba(29, 106, 208, .18), 0 3px 10px rgba(29, 106, 208, .12);
+  transform: scale(1); transition: transform .5s cubic-bezier(.32, .72, 0, 1), box-shadow .4s ease;
 }
-.opt:hover:not(:disabled){border-color:var(--gold);color:var(--gold);background: var(--white);}
-.opt.correct{background:#d1fae5;border-color:var(--teal);color:var(--teal);}
-.opt.wrong{background:#fee2e2;border-color:#fca5a5;color:#dc2626;animation:shake .3s;}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-
-.err-msg{font-size:.75rem;color:#dc2626;min-height:1.2rem;margin-bottom:.4rem;}
-.prog{height:3px;background:var(--border);margin-top:1.2rem;border-radius: 3px;}
-.prog-fill{height:100%;background:var(--gold);width:0%;transition:width .4s; border-radius: 3px;}
-.gate-foot{font-size:.6rem;color:var(--muted);margin-top:1.5rem;letter-spacing:.05em;}
-
-/* ── SITE ── */
-#site{opacity:0;transition:opacity .8s;}
-#site.show{opacity:1;}
-
-/* ── HEADER STRIPE ── */
-.top-stripe{
-  background:var(--ink);color:var(--paper2);
-  font-size:.65rem;letter-spacing:.12em;
-  text-align:center;padding:.4rem 1rem;
-  position:fixed;top:0;left:0;right:0;z-index:200;
-}
-.top-stripe strong{color:var(--gold2);}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:28px;left:0;right:0;z-index:190;
-  background:rgba(240,249,255,.96);
-  backdrop-filter:blur(8px);
-  border-bottom:2px solid var(--gold);
-  padding:0 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-  height:56px;
-}
-.nav-logo{
-  display:flex;align-items:center;gap:.7rem;flex-shrink:0;
-}
-.nav-seal{
-  width:34px;height:34px;
-  border:2px solid var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:.9rem;font-weight:900;
-  color:var(--gold);
-  border-radius: 50%;
-}
-.nav-brand-txt{line-height:1.2;}
-.nav-brand-main{font-size:.82rem;font-weight:900;color:var(--ink);}
-.nav-brand-sub{font-size:.6rem;color:var(--muted);}
-.nav-links{display:flex;gap:.1rem;list-style:none;}
-.nav-links a{
-  color:var(--muted);text-decoration:none;font-size:.72rem;font-weight:600;
-  padding:.3rem .65rem;transition:all .15s;letter-spacing:.02em;
-}
-.nav-links a:hover{color:var(--gold);background:var(--paper2); border-radius: 8px;}
-.nav-ham{display:none;background:none;border:1px solid var(--border);
-  padding:.3rem .5rem;font-size:.9rem;cursor:pointer; border-radius: 8px;}
-
-.spacer{height:84px;}
-
-/* ── HERO ── */
-.hero{
-  background:linear-gradient(135deg, #0c4a6e 0%, #0284c7 100%);
-  padding:5rem 2rem 4rem;
-  position:relative;overflow:hidden;
-}
-.hero-canvas{position:absolute;inset:0;pointer-events:none;opacity:.25;}
-
-/* Ruled paper lines texture */
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(
-    transparent, transparent 28px,
-    rgba(255,255,255,.05) 28px, rgba(255,255,255,.05) 29px
-  );
-  pointer-events:none;
+.gnav.press .lens-in {
+  transform: scale(1.1, 1.14);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .95), inset 0 -2px 5px rgba(29, 106, 208, .2), 0 0 0 .5px rgba(29, 106, 208, .22), 0 8px 20px rgba(29, 106, 208, .18);
 }
 
-.hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1;}
-.hero-kicker{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-size:.62rem;letter-spacing:.2em;color:var(--teal2);
-  text-transform:uppercase;margin-bottom:1.2rem;
-}
-.hero-kicker::before,.hero-kicker::after{content:'';width:24px;height:1px;background:var(--teal2);}
+/* hero */
+.hero { position: relative; isolation: isolate; padding-block: clamp(2.5rem, 7vw, 5rem) clamp(2.5rem, 6vw, 4rem); display: grid; gap: clamp(2.5rem, 6vw, 4.5rem); }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(50% 65% at 90% 0%, rgba(29, 106, 208, .09), transparent 70%), radial-gradient(40% 55% at 0% 50%, rgba(90, 162, 242, .08), transparent 70%); }
+.eyebrow { font-size: .88rem; color: var(--ac); font-weight: 500; }
+.hero h1 { font-size: clamp(2.6rem, 7vw, 4.8rem); line-height: 1.25; color: var(--ink); margin-top: .5rem; }
+.hero h1 em { font-style: normal; color: var(--ac); }
+.hero .lead { max-width: 40rem; margin-top: 1.25rem; color: var(--mut); font-size: 1.05rem; font-weight: 300; line-height: 2; }
+.timeline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.tl { border-top: 1px solid var(--ln); padding-top: 1.1rem; min-width: 0; }
+.tl.now { border-top: 2px solid var(--ac); margin-top: -1px; }
+.tl .yr { font-family: var(--se); font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.2; font-weight: 400; font-variant-numeric: lining-nums; }
+.tl.now .yr { color: var(--ac); }
+.tl .no { font-weight: 700; font-size: .98rem; margin-top: .25rem; }
+.tl .nm { color: var(--mut); font-size: .92rem; line-height: 1.8; font-weight: 300; margin-top: .15rem; }
+.tl .tag { display: inline-block; margin-top: .5rem; font-size: .78rem; font-weight: 500; color: var(--ac); border: 1px solid var(--ac); border-radius: 999px; padding: 0 .75rem; }
 
-.hero-h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,5vw,3.8rem);
-  color:#fff;line-height:1.15;
-  margin-bottom:.5rem;
-}
-.hero-h1 em{color:var(--gold2);font-style:italic;}
-.hero-rule{width:60px;height:3px;background:var(--gold2);margin:1.2rem 0; border-radius: 2px;}
+/* sections */
+section.part { padding-block: clamp(3.5rem, 8vw, 6.5rem); border-top: 1px solid var(--ln); }
+.sec-head { display: grid; gap: .5rem; margin-bottom: clamp(2rem, 5vw, 3.25rem); }
+.sec-head h2 { font-size: clamp(2.1rem, 5.4vw, 3.6rem); line-height: 1.3; }
+.sec-head h2 em { font-style: normal; color: var(--ac); }
+.sec-head p { color: var(--mut); max-width: 44rem; font-weight: 300; line-height: 2; font-size: 1.02rem; }
+h3 { font-size: clamp(1.45rem, 3vw, 1.85rem); font-weight: 700; color: var(--ink); }
+h4 { font-size: 1rem; }
+.sub { margin-top: clamp(2.5rem, 6vw, 4rem); display: grid; gap: 1.25rem; }
+.sub > h3 { display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap; padding-bottom: .75rem; border-bottom: 1px solid var(--ink); }
+.lead-p { color: var(--mut); font-weight: 300; max-width: 46rem; }
 
-/* Ishkaliya */
-.ishkaliya{
-  border-right:3px solid var(--gold2);
-  padding:.9rem 1.2rem;
-  background:rgba(255,255,255,.1);
-  margin:1.5rem 0;max-width:700px;
-  border-radius: 0 16px 16px 0;
-}
-.ish-label{font-size:.58rem;letter-spacing:.18em;color:var(--gold2);text-transform:uppercase;margin-bottom:.3rem;}
-.ish-text{font-size:.92rem;color:rgba(255,255,255,.9);font-style:italic;line-height:1.6;}
+.cols { display: grid; gap: 2rem 2.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+.col { border-top: 1px solid var(--ln); padding-top: 1rem; min-width: 0; }
+.col h4 { font-family: var(--se); font-size: 1.4rem; font-weight: 700; line-height: 1.5; margin-bottom: .35rem; }
+.col h4 .chip { margin-inline-start: .5rem; vertical-align: middle; }
+.col p { color: var(--mut); font-weight: 300; font-size: .98rem; line-height: 1.95; }
+.chip { display: inline-block; font-family: var(--sa); font-size: .8rem; font-weight: 500; color: var(--ac); white-space: nowrap; line-height: 1.7; }
+.col h4 .chip, .sub > h3 .chip { border: 1px solid rgba(29, 106, 208, .35); border-radius: 999px; padding: 0 .65rem; font-size: .75rem; }
 
-.hero-desc{font-size:.85rem;color:rgba(255,255,255,.6);font-weight:300;max-width:540px;line-height:1.9;margin-bottom:2rem;}
-.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;}
-.btn-primary{
-  background:var(--gold2);color:var(--ink);
-  padding:.65rem 1.5rem;font-weight:800;font-size:.8rem;
-  text-decoration:none;font-family:'Cairo',sans-serif;
-  border:none;cursor:pointer;transition:all .18s;letter-spacing:.03em;
-  border-radius: 40px;
-}
-.btn-primary:hover{background:var(--gold);color:white;transform:translateY(-2px);}
-.btn-ghost{
-  background:transparent;color:rgba(255,255,255,.8);
-  padding:.65rem 1.5rem;font-weight:600;font-size:.8rem;
-  text-decoration:none;font-family:'Cairo',sans-serif;
-  border:1px solid rgba(255,255,255,.3);transition:all .18s;
-  border-radius: 40px;
-}
-.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2);}
+.quote { border-inline-start: 1px solid var(--ac); padding-inline-start: 1.5rem; font-family: var(--se); font-size: clamp(1.2rem, 2.6vw, 1.55rem); line-height: 2; margin-top: 2.5rem; }
+.quote b { color: var(--ac); }
+.note { border-inline-start: 1px solid var(--ac); padding-inline-start: 1.25rem; color: var(--ink); font-weight: 300; }
 
-/* ── PLAN STRIP ── */
-.plan-strip{
-  background:var(--white);
-  border-top:1px solid var(--border);border-bottom:3px solid var(--gold);
-  padding:2rem;
-}
-.plan-strip-inner{max-width:960px;margin:0 auto;}
-.plan-strip-title{
-  font-size:.6rem;letter-spacing:.2em;color:var(--gold);
-  text-transform:uppercase;margin-bottom:1.2rem;text-align:center;
-}
-.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border); border-radius: 16px; overflow: hidden;}
-@media(max-width:700px){.plan-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:400px){.plan-grid{grid-template-columns:1fr;}}
-.plan-cell{
-  background:var(--white);padding:1.2rem 1rem;
-  transition:background .2s;
-}
-.plan-cell:hover{background:var(--paper);}
-.plan-tag{
-  font-size:.55rem;letter-spacing:.15em;color:var(--gold);
-  text-transform:uppercase;margin-bottom:.5rem;
-}
-.plan-title{font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;line-height:1.4;}
-.plan-subs{display:flex;flex-direction:column;gap:.2rem;}
-.plan-sub{font-size:.7rem;color:var(--muted);padding-right:.6rem;border-right:1px solid var(--border);}
+/* plan */
+.plan { display: grid; gap: 2rem 2.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+.plan a { text-decoration: none; border-top: 1px solid var(--ink); padding-top: 1rem; display: block; transition: color .25s; }
+.plan a:hover strong { color: var(--ac); }
+.plan strong { font-family: var(--se); font-size: 1.35rem; line-height: 1.6; display: block; margin-bottom: .5rem; transition: color .25s; }
+.plan span { display: block; color: var(--mut); font-size: .96rem; line-height: 1.9; font-weight: 300; padding-inline-start: 1.1rem; position: relative; }
+.plan span::before { content: ""; position: absolute; inset-inline-start: 0; top: 1.05em; width: .5rem; height: 1px; background: var(--mut); }
 
-/* ── WRAPPER ── */
-.wrapper{max-width:960px;margin:0 auto;padding:0 2rem;}
+/* tabs: plain text with a thin underline */
+.tablist { display: flex; gap: .5rem 2.25rem; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid var(--ln); margin-bottom: clamp(2rem, 5vw, 3rem); }
+.tablist button { font: inherit; font-size: .98rem; font-weight: 500; color: var(--mut); background: none; border: 0; border-bottom: 1px solid transparent; margin-bottom: -1px; padding: .7rem .1rem; cursor: pointer; transition: color .25s, border-color .25s; line-height: 1.6; }
+.tablist button:hover { color: var(--ink); }
+.tablist button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ac); }
+.panel[hidden] { display: none; }
 
-/* ── SECTION STYLES ── */
-section{padding:3.5rem 0;}
-section+section{border-top:1px solid var(--border);}
+/* ranks comparison */
+.ranks { display: grid; gap: 2.5rem 3.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); }
+.decree { min-width: 0; }
+.decree > header { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; flex-wrap: wrap; padding-bottom: .75rem; border-bottom: 1px solid var(--ink); }
+.decree > header b { font-family: var(--se); font-size: 1.5rem; font-weight: 700; line-height: 1.5; }
+.decree > header small { font-size: .85rem; color: var(--mut); font-weight: 300; }
+.decree.new > header { border-bottom-color: var(--ac); }
+.decree.new > header b { color: var(--ac); }
+.corps { margin-top: 1.5rem; }
+.corps h4 { font-size: .92rem; font-weight: 500; color: var(--mut); margin-bottom: .75rem; display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
+.ladder { list-style: none; margin: 0; padding: 0; display: grid; gap: .35rem; border-inline-start: 1px solid #99A8BB; padding-inline-start: 1.5rem; margin-inline-start: .25rem; }
+.ladder li { line-height: 1.9; }
+.ladder li.add { font-weight: 700; color: var(--ac); }
+.ladder li.del { color: var(--mut); text-decoration: line-through; text-decoration-thickness: 1px; }
+.flag { font-size: .75rem; font-weight: 500; text-decoration: none; display: inline-block; color: var(--ac); border: 1px solid currentColor; border-radius: 999px; padding: 0 .65rem; margin-inline-start: .5rem; line-height: 1.7; white-space: nowrap; }
+.flag.out { color: var(--mut); }
 
-.sec-eyebrow{
-  font-size:.58rem;letter-spacing:.2em;color:var(--teal);
-  text-transform:uppercase;margin-bottom:.5rem;
-  display:flex;align-items:center;gap:.5rem;
-}
-.sec-eyebrow::before{content:'';width:20px;height:2px;background:var(--teal);}
-.sec-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.4rem,2.5vw,2rem);
-  color:var(--ink);margin-bottom:.5rem;line-height:1.25;
-}
-.sec-desc{font-size:.84rem;color:var(--muted);font-weight:300;max-width:620px;line-height:1.9;margin-bottom:2rem;}
+.tablewrap { overflow-x: auto; border-top: 1px solid var(--ln); border-bottom: 1px solid var(--ln); }
+table { border-collapse: collapse; width: 100%; min-width: 32rem; font-size: .98rem; line-height: 1.8; }
+th, td { padding: 1rem 1rem 1rem 0; text-align: right; border-bottom: 1px solid var(--ln); font-weight: 400; }
+th { color: var(--mut); font-size: .85rem; font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-family: var(--se); font-size: 1.2rem; font-weight: 700; }
+td b { font-family: var(--se); font-size: 1.35rem; font-weight: 700; color: var(--ac); }
 
-/* ── INTRO CARDS ── */
-.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border); border-radius: 20px; overflow: hidden;}
-@media(max-width:580px){.intro-grid{grid-template-columns:1fr;}}
-.intro-card{
-  background:var(--white);padding:1.8rem;
-  border-top:3px solid transparent;transition:all .2s;
-}
-.intro-card:nth-child(1){border-top-color:var(--gold);}
-.intro-card:nth-child(2){border-top-color:var(--teal);}
-.intro-card:nth-child(3){border-top-color:var(--rust);}
-.intro-card:nth-child(4){border-top-color:var(--ink);}
-.intro-card:hover{background:var(--paper);}
-.intro-n{
-  font-family:'Playfair Display',serif;font-size:2rem;
-  color:var(--border);font-weight:900;margin-bottom:.5rem;
-}
-.intro-title{font-size:.9rem;font-weight:800;color:var(--ink);margin-bottom:.4rem;}
-.intro-body{font-size:.8rem;color:var(--muted);line-height:1.85;font-weight:300;}
+.digital { background: var(--g1); border-radius: 18px; padding: clamp(1.5rem, 4vw, 2.5rem); display: grid; gap: .5rem; margin-top: 2.5rem; }
+.digital h4 { font-family: var(--se); font-size: 1.5rem; color: var(--deep); line-height: 1.6; }
+.digital p { color: var(--mut); font-weight: 300; max-width: 46rem; }
 
-/* ── ACCORDION ── */
-.chapter-label{
-  display:flex;align-items:center;gap:.8rem;
-  padding:.7rem 1rem;
-  background:var(--ink);color:var(--gold2);
-  font-size:.75rem;font-weight:800;letter-spacing:.08em;
-  text-transform:uppercase;margin-bottom:.6rem;
-  border-radius: 12px;
-}
-.chapter-num{
-  width:22px;height:22px;border:1px solid var(--gold2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:.7rem;font-weight:900;flex-shrink:0;
-  border-radius: 6px;
-}
+/* article lists: label column then text */
+.items { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
+.items li { display: grid; grid-template-columns: 6.25rem minmax(0, 1fr); gap: .75rem; padding: 1rem 0; border-top: 1px solid var(--ln); align-content: start; line-height: 1.9; font-weight: 300; }
+.items li .chip { font-weight: 500; padding-top: .1rem; }
+.items.one { grid-template-columns: 1fr; }
+.corps p { color: var(--mut); font-weight: 300; margin-top: 1.1rem; }
 
-.acc{display:flex;flex-direction:column;gap:1px;background:var(--border);margin-bottom:1.2rem; border-radius: 20px; overflow: hidden;}
-.acc-item{background:var(--white);}
-.acc-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 1.2rem;cursor:pointer;gap:1rem;user-select:none;
-  transition:background .15s;
-}
-.acc-head:hover{background:var(--paper);}
-.acc-head-r{display:flex;align-items:center;gap:.9rem;}
-.acc-num{
-  width:32px;height:32px;
-  background:var(--paper2);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;
-  color:var(--muted);flex-shrink:0;border:1px solid var(--border);
-  border-radius: 50%;
-}
-.acc-item.open .acc-num{background:var(--gold);color:white;border-color:var(--gold);}
-.acc-title{font-size:.88rem;font-weight:800;color:var(--ink);}
-.acc-sub{font-size:.68rem;color:var(--muted);margin-top:.1rem;}
-.acc-arrow{
-  font-size:.7rem;color:var(--muted);
-  transition:transform .3s;flex-shrink:0;
-}
-.acc-item.open .acc-arrow{transform:rotate(180deg);color:var(--gold);}
+/* discipline */
+.degrees { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: .5rem; }
+.degrees button { font: inherit; cursor: pointer; text-align: right; background: none; border: 0; border-top: 2px solid var(--ln); padding: .9rem 0 0; color: var(--mut); display: grid; gap: .25rem; transition: border-color .3s, color .3s; }
+.degrees button:hover { color: var(--ink); border-top-color: #99B6E0; }
+.degrees button[aria-pressed="true"] { color: var(--ink); border-top-color: var(--ac); }
+.degrees .lbl { font-family: var(--se); font-size: 1.3rem; font-weight: 700; line-height: 1.5; }
+.meter { display: flex; gap: 4px; max-width: 5rem; }
+.meter i { height: 3px; flex: 1; border-radius: 2px; background: var(--ln); }
+.meter i.f { background: var(--ac); }
+.detail { margin-top: 1.5rem; display: grid; gap: 1.75rem 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+.detail > div { border-top: 1px solid var(--ln); padding-top: 1rem; }
+.detail h4 { color: var(--ac); font-size: .88rem; font-weight: 500; margin-bottom: .6rem; }
+.detail ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem; }
+.detail li { padding-inline-start: 1.1rem; position: relative; line-height: 1.9; font-weight: 300; }
+.detail li::before { content: ""; position: absolute; inset-inline-start: 0; top: 1.05em; width: .5rem; height: 1px; background: var(--ac); }
+.detail .wide { grid-column: 1 / -1; }
+.detail p { font-weight: 300; }
+.detail p.dim { color: var(--mut); }
 
-.acc-body{display:none;}
-.acc-item.open .acc-body{display:block;animation:fadeDown .25s ease;}
-@keyframes fadeDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
-.acc-inner{padding:1.2rem;border-top:1px solid var(--paper2);}
+.steps { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr)); margin-top: .5rem; }
+.step { border-top: 1px solid var(--ln); padding-top: 1rem; display: grid; gap: .1rem; align-content: start; }
+.step .big { font-family: var(--se); font-size: clamp(2rem, 4vw, 2.7rem); font-weight: 400; color: var(--ac); line-height: 1.3; }
+.step p { color: var(--mut); font-size: .92rem; line-height: 1.9; font-weight: 300; }
 
-/* Content boxes */
-.def-box{background:var(--paper2);border-right:3px solid var(--teal);padding:.9rem 1.1rem;margin-bottom:.9rem; border-radius: 0 16px 16px 0;}
-.def-label{font-size:.58rem;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:.25rem;}
-.def-text{font-size:.83rem;color:var(--ink);line-height:1.85;}
+/* conclusion */
+.band { background: var(--g1); border-radius: 22px; padding: clamp(1.5rem, 5vw, 3.5rem); }
+.two { display: grid; gap: 2.5rem 3.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+.two h3 { padding-bottom: .6rem; border-bottom: 1px solid var(--ink); margin-bottom: 1.25rem; }
+.list-n { list-style: none; counter-reset: n; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.list-n li { counter-increment: n; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .75rem; align-items: baseline; font-weight: 300; }
+.list-n li::before { content: counter(n); font-family: var(--se); font-size: 1.5rem; color: var(--ac); line-height: 1; }
 
-.art-box{background:var(--white);border-right:3px solid var(--gold);padding:.9rem 1.1rem;margin:.8rem 0; border-radius: 0 16px 16px 0; box-shadow: 0 1px 2px rgba(0,0,0,0.02);}
-.art-label{font-size:.58rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:.25rem;}
-.art-text{font-size:.82rem;color:var(--ink);line-height:1.85;font-style:italic;}
+.refs { list-style: none; margin: 0; padding: 0; counter-reset: r; }
+.refs li { counter-increment: r; font-size: .96rem; line-height: 1.9; padding: 1rem 0; border-top: 1px solid var(--ln); display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .75rem; font-weight: 300; }
+.refs li::before { content: counter(r); color: var(--ac); font-family: var(--se); font-size: 1.2rem; line-height: 1.6; }
 
-.analysis-box{background:var(--accent-light);border-right:3px solid var(--teal2);padding:.9rem 1.1rem;margin:.8rem 0; border-radius: 0 16px 16px 0;}
-.analysis-label{font-size:.58rem;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:.25rem;}
-.analysis-text{font-size:.83rem;color:var(--ink);line-height:1.9;}
+footer { padding-block: 2.5rem 3.5rem; border-top: 1px solid var(--ln); color: var(--mut); font-size: .9rem; text-align: center; font-weight: 300; }
 
-.debate-box{background:var(--paper2);border-right:3px solid var(--rust);padding:.9rem 1.1rem;margin:.8rem 0; border-radius: 0 16px 16px 0;}
-.debate-label{font-size:.58rem;letter-spacing:.15em;color:var(--rust);text-transform:uppercase;margin-bottom:.25rem;}
-.debate-text{font-size:.83rem;color:var(--ink);line-height:1.9;}
-
-.pts{display:flex;flex-direction:column;gap:.35rem;margin:.7rem 0;}
-.pt{
-  display:flex;align-items:flex-start;gap:.6rem;flex-direction:row-reverse;
-  font-size:.82rem;padding:.5rem .8rem;background:var(--paper);line-height:1.7;
-  border-radius: 12px;
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .timeline { grid-template-columns: 1fr; gap: 1.5rem; }
+  .degrees { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .brand-sub { display: none; }
+  .items li { grid-template-columns: 5.25rem minmax(0, 1fr); }
+  .tablist { gap: .25rem 1.5rem; }
 }
-.pt::before{content:'—';color:var(--gold);font-weight:900;flex-shrink:0;margin-top:.1rem;}
-.pt strong{color:var(--teal);font-weight:700;}
-
-.badges{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;}
-.badge{
-  font-size:.68rem;font-weight:700;padding:.25rem .7rem;
-  border:1px solid;
-  border-radius: 30px;
+@media (max-width: 520px) {
+  .gtab .l { display: none; }
+  .gtab .s { display: inline; }
+  .gtab { font-size: .74rem; }
 }
-.badge-gold{background:var(--paper2);color:var(--gold);border-color:var(--gold2);}
-.badge-teal{background:var(--accent-light);color:var(--teal);border-color:var(--teal2);}
-.badge-rust{background:var(--paper2);color:var(--rust);border-color:var(--border);}
-
-/* ── CHART SECTION ── */
-.chart-section{background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);}
-.chart-wrap{max-width:820px;margin:0 auto;padding:3rem 2rem;}
-.chart-title{font-size:.6rem;letter-spacing:.2em;color:var(--gold2);text-align:center;text-transform:uppercase;margin-bottom:2.5rem;}
-.chart-root{
-  background:rgba(255,255,255,.06);border:1px solid var(--gold2);
-  padding:.8rem 2rem;text-align:center;
-  font-size:.88rem;font-weight:700;color:var(--gold2);margin-bottom:0;
-  border-radius: 40px;
-}
-.chart-v{width:1px;height:28px;background:var(--gold2);margin:0 auto;}
-.chart-row{display:flex;gap:2rem;position:relative;justify-content:center;}
-.chart-row::before{content:'';position:absolute;top:0;right:20%;left:20%;height:1px;background:var(--gold2);}
-.chart-branch{display:flex;flex-direction:column;align-items:center;}
-.chart-branch::before{content:'';width:1px;height:22px;background:var(--gold2);}
-.chart-node{padding:.6rem 1.2rem;font-size:.8rem;font-weight:700;min-width:160px;text-align:center; border-radius: 40px;}
-.node-gold{background:var(--gold);color:white;}
-.node-teal{background:var(--teal);color:#fff;}
-.chart-leaves{width:100%;display:flex;flex-direction:column;align-items:center;}
-.chart-leaf::before{content:'';width:1px;height:14px;background:var(--gold2);}
-.leaf-box{
-  background:rgba(255,255,255,.05);border:1px solid var(--gold2);
-  color:var(--paper2);padding:.35rem .6rem;font-size:.72rem;text-align:center;width:100%;margin-bottom:0;
-  border-radius: 24px;
-}
-
-/* ── ANSWER ── */
-.answer-section{background:var(--paper2);}
-.answer-card{border:1px solid var(--border);background:var(--white); border-radius: 24px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);}
-.answer-head{
-  background:var(--ink);padding:1.1rem 1.4rem;
-  display:flex;align-items:center;gap:.7rem;
-}
-.answer-icon{color:var(--gold);font-size:1rem;}
-.answer-head-main{font-size:.88rem;font-weight:800;color:#fff;}
-.answer-head-sub{font-size:.68rem;color:var(--paper2);margin-top:.1rem;}
-.answer-body{padding:1.4rem;}
-.answer-para{font-size:.84rem;color:var(--ink);line-height:2;margin-bottom:.9rem;}
-.answer-para strong{color:var(--teal);font-weight:700;}
-.answer-conclusion{
-  border-right:4px solid var(--gold);
-  background:var(--paper);padding:1rem 1.2rem;
-  font-size:.83rem;color:var(--ink);line-height:1.9;font-weight:500;
-  border-radius: 0 20px 20px 0;
-}
-.answer-conclusion strong{color:var(--gold);}
-
-/* ── SOURCES ── */
-.src-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:1rem; border-radius: 20px; overflow: hidden;}
-@media(max-width:580px){.src-grid{grid-template-columns:1fr;}}
-.src-item{
-  background:var(--white);padding:.8rem 1rem;
-  display:flex;gap:.7rem;flex-direction:row-reverse;
-  font-size:.78rem;color:var(--muted);line-height:1.6;
-}
-.src-n{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--border);flex-shrink:0;}
-
-/* ── TEAM ── */
-.team-section{background:var(--ink);}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:1.5rem; border-radius: 24px; overflow: hidden;}
-@media(max-width:680px){.team-grid{grid-template-columns:1fr 1fr;}}
-.tcard{
-  background:var(--white);padding:1.5rem 1rem;text-align:center;
-  transition:background .2s;border-top:2px solid transparent;
-}
-.tcard:hover{background:var(--paper2);}
-.tcard.main{border-top-color:var(--gold);}
-.tcard:not(.main){border-top-color:var(--border);}
-.tcard.main:hover{background:var(--paper);}
-.tav{
-  width:46px;height:46px;margin:0 auto .7rem;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:1rem;font-weight:900;
-  border:1px solid;
-  border-radius: 50%;
-}
-.tcard.main .tav{border-color:var(--gold);color:var(--gold);}
-.tcard:not(.main) .tav{border-color:var(--border);color:var(--muted);}
-.tname{font-size:.8rem;font-weight:800;color:var(--ink);margin-bottom:.2rem;}
-.trole{font-size:.65rem;color:var(--muted);}
-.tdesigner{
-  display:inline-block;font-size:.6rem;color:var(--gold);
-  border:1px solid rgba(14,165,233,.3);padding:.1rem .5rem;margin-top:.35rem;
-  border-radius: 20px;
-}
-
-/* ── FOOTER ── */
-footer{background:var(--ink);color:var(--muted);}
-.foot-main{
-  display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;
-  padding:2.5rem 2rem;max-width:960px;margin:0 auto;
-}
-@media(max-width:600px){.foot-main{grid-template-columns:1fr;}}
-.foot-logo{
-  font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;
-  color:var(--gold2);margin-bottom:.5rem;
-}
-.foot-desc{font-size:.72rem;line-height:1.8;color:var(--paper2);font-weight:300;}
-.foot-col-h{font-size:.55rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:.7rem;}
-.foot-links{display:flex;flex-direction:column;gap:.3rem;}
-.foot-links a{color:var(--paper2);text-decoration:none;font-size:.73rem;transition:color .15s;}
-.foot-links a:hover{color:var(--gold2);}
-.foot-bottom{
-  background:rgba(0,0,0,.2);text-align:center;padding:.7rem 2rem;
-  font-size:.65rem;color:var(--paper2);display:flex;justify-content:space-between;
-  flex-wrap:wrap;gap:.3rem;align-items:center;
-}
-.foot-bottom strong{color:var(--gold2);}
-
-/* ── MOBILE ── */
-#mob-menu{
-  display:none;position:fixed;top:84px;right:0;left:0;
-  background:var(--white);border-bottom:2px solid var(--gold);
-  z-index:180;padding:1rem 1.5rem;flex-direction:column;gap:.2rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-#mob-menu.open{display:flex;}
-#mob-menu a{
-  color:var(--ink);text-decoration:none;font-size:.85rem;font-weight:600;
-  padding:.5rem;border-bottom:1px solid var(--paper2);display:block;
-}
-
-@media(max-width:680px){
-  .nav-links{display:none;}
-  .nav-ham{display:block;}
-  .hero{padding:3rem 1.2rem 2.5rem;}
-  .wrapper{padding:0 1.2rem;}
-  section{padding:2.5rem 0;}
-  .plan-strip{padding:1.5rem 1.2rem;}
-  .foot-main{padding:1.8rem 1.2rem;}
-  .foot-bottom{padding:.6rem 1.2rem;font-size:.6rem;}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lens, .lens-in { transition: none; }
 }
 </style>
-</head>
-<body>
 
-<!-- GATE -->
-<div id="gate">
-  <div class="gate-inner">
-    <div class="gate-eyebrow">كلية الحقوق &nbsp;—&nbsp; الجزائر</div>
-    <div class="gate-title">بوابة البحث الدستوري</div>
-    <div class="gate-divider"></div>
-    <div class="gate-sub">أجب عن سؤال واحد صحيح للدخول</div>
-    <div class="q-label" id="ql">سؤال دستوري</div>
-    <div class="q-num" id="qn">السؤال 1</div>
-    <div class="q-text" id="qt">ما اسم الغرفتين اللتين يتكون منهما البرلمان الجزائري؟</div>
-    <div class="opts" id="qo"></div>
-    <div class="err-msg" id="qe"></div>
-    <div class="prog"><div class="prog-fill" id="qp"></div></div>
-    <div class="gate-foot">تصميم وتطوير: <strong>Diabi Raouf</strong> &nbsp;—&nbsp; كلية الحقوق 2026</div>
+<div dir="rtl" lang="ar">
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="brand">أمناء الضبط</span>
+    <span class="brand-sub">المرسوم التنفيذي 26-308</span>
   </div>
 </div>
 
-<!-- SITE -->
-<div id="site">
-
-  <div class="top-stripe">
-    تصميم وتطوير: <strong>Diabi Raouf</strong> &nbsp;|&nbsp; كلية الحقوق &nbsp;|&nbsp; القانون الدستوري &nbsp;|&nbsp; 2025/2026
+<div class="gwrap">
+  <div class="gnav" id="gnav">
+    <span class="gbg"></span>
+    <nav class="gtrack" id="gtrack" aria-label="أقسام البحث">
+      <span class="lens" id="lens" aria-hidden="true"><span class="lens-in"></span></span>
+      <a class="gtab" href="#intro"><span>المقدمة</span></a>
+      <a class="gtab" href="#part1"><span class="l">المبحث الأول</span><span class="s">المبحث 1</span></a>
+      <a class="gtab" href="#part2"><span class="l">المبحث الثاني</span><span class="s">المبحث 2</span></a>
+      <a class="gtab" href="#conclusion"><span>الخاتمة</span></a>
+      <a class="gtab" href="#refs"><span>المراجع</span></a>
+    </nav>
   </div>
+</div>
 
-  <nav>
-    <div class="nav-logo">
-      <div class="nav-seal">ق</div>
-      <div class="nav-brand-txt">
-        <div class="nav-brand-main">البحث الدستوري</div>
-        <div class="nav-brand-sub">التعديل الدستوري 2020</div>
-      </div>
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">بحث قانوني</div>
+    <h1>النظام القانوني <em>لأمناء الضبط</em></h1>
+    <p class="lead">طبيعة هذه الفئة وتصنيفها ومهامها وحقوقها وواجباتها ومسؤوليتها التأديبية، مع مقارنة المرسوم التنفيذي 26-308 بالمرسوم التنفيذي 08-409.</p>
+  </div>
+  <div class="timeline" aria-label="تسلسل القوانين الأساسية الخاصة">
+    <div class="tl">
+      <div class="yr">1990</div>
+      <div class="no">المرسوم التنفيذي 90-231</div>
+      <div class="nm">28 يوليو 1990. موظفو كتابات الضبط للجهات القضائية.</div>
     </div>
-    <button class="nav-ham" onclick="document.getElementById('mob-menu').classList.toggle('open')">&#9776;</button>
-    <ul class="nav-links">
-      <li><a href="#intro">مقدمة</a></li>
-      <li><a href="#mbhath1">المبحث الأول</a></li>
-      <li><a href="#mbhath2">المبحث الثاني</a></li>
-      <li><a href="#answer">الخاتمة</a></li>
-      <li><a href="#sources">المراجع</a></li>
-      <li><a href="#team">الفريق</a></li>
-    </ul>
-  </nav>
-  <div class="spacer"></div>
-
-  <!-- HERO -->
-  <div class="hero">
-    <canvas id="hero-canvas" class="hero-canvas"></canvas>
-    <div class="hero-inner">
-      <div class="hero-kicker">القانون الدستوري &nbsp;—&nbsp; السنة الجامعية 2025/2026</div>
-      <h1 class="hero-h1">السلطة التشريعية<br>في التعديل الدستوري <em>2020</em></h1>
-      <div class="hero-rule"></div>
-      <div class="ishkaliya">
-        <div class="ish-label">إشكالية البحث</div>
-        <div class="ish-text">هل جاء التعديل الدستوري لسنة 2020 ليُكرّس البرلمان سلطةً تشريعية مستقلة ومؤثرة فعلاً، أم أن هيمنة السلطة التنفيذية لا تزال تُقيّد اختصاصاته التشريعية والرقابية؟</div>
-      </div>
-      <p class="hero-desc">دراسة تحليلية نقدية في تشكيل البرلمان واختصاصاته التشريعية والرقابية في ضوء التعديل الدستوري الجزائري لسنة 2020.</p>
-      <div class="hero-btns">
-        <a href="#plan" class="btn-primary">خطة البحث</a>
-        <a href="#mbhath1" class="btn-ghost">ابدأ القراءة</a>
-      </div>
+    <div class="tl">
+      <div class="yr">2008</div>
+      <div class="no">المرسوم التنفيذي 08-409</div>
+      <div class="nm">24 ديسمبر 2008. القانون الأساسي الخاص بمستخدمي أمانات الضبط.</div>
+    </div>
+    <div class="tl now">
+      <div class="yr">2026</div>
+      <div class="no">المرسوم التنفيذي 26-308</div>
+      <div class="nm">22 سبتمبر 2026. الجريدة الرسمية العدد 70، بتاريخ 7 أكتوبر 2026.</div>
+      <span class="tag">النص الساري</span>
     </div>
   </div>
+</header>
 
-  <!-- PLAN STRIP -->
-  <div class="plan-strip" id="plan">
-    <div class="plan-strip-inner">
-      <div class="plan-strip-title">خطة البحث — هيكل منظم</div>
-      <div class="plan-grid">
-        <div class="plan-cell">
-          <div class="plan-tag">مقدمة</div>
-          <div class="plan-title">تأطير الإشكالية والمنهج</div>
-          <div class="plan-subs">
-            <div class="plan-sub">سياق التعديل 2020</div>
-            <div class="plan-sub">الإشكالية المركزية</div>
-            <div class="plan-sub">المنهج التحليلي النقدي</div>
+<!-- المقدمة -->
+<section class="part" id="intro">
+  <div class="sec-head">
+    <div class="eyebrow">مقدمة</div>
+    <h2>لماذا <em>أمانة الضبط</em>؟</h2>
+    <p>لا يقوم مرفق العدالة على القاضي وحده. تعتمد الجهات القضائية على أجهزة وموظفين ينظمون العمل ويضمنون حسن سيره، وفي مقدمتهم أمانة الضبط.</p>
+  </div>
+  <div class="cols">
+    <div class="col"><h4>ماذا تفعل؟</h4><p>تتولى الأعمال الكتابية والإجرائية المرتبطة بالدعاوى: تسجيلها وقيدها، حفظ الملفات والوثائق والأحكام، حضور الجلسات وتحرير المحاضر.</p></div>
+    <div class="col"><h4>ما أهمية الموضوع؟</h4><p>معرفة الإطار القانوني الذي ينظم هذه الفئة بعد صدور المرسوم الجديد وما أدخله من تعديلات في التصنيف والمهام والحقوق والواجبات والنظام التأديبي.</p></div>
+    <div class="col"><h4>المنهج المتبع</h4><p>المنهج الوصفي التحليلي، مع الاستعانة بالمنهج المقارن لإبراز تعديلات المرسوم 26-308 مقارنة بالمرسوم 08-409.</p></div>
+  </div>
+  <p class="quote"><b>الإشكالية:</b> ما هو النظام القانوني الذي يحكم مستخدمي أمانات الضبط في الجزائر من حيث طبيعتهم القانونية وتصنيفهم ومهامهم وحقوقهم وواجباتهم ومسؤوليتهم التأديبية؟ وما أهم التغييرات التي جاء بها المرسوم التنفيذي رقم 26-308؟</p>
+  <div class="sub">
+    <h3>خطة البحث</h3>
+    <div class="plan">
+      <a href="#part1">
+        <strong>المبحث الأول: الإطار المفاهيمي والتنظيمي لأمناء الضبط</strong>
+        <span>المطلب الأول: التعريف بأمانة الضبط ومكانتها في التنظيم القضائي</span>
+        <span>المطلب الثاني: التصنيف الهيكلي والرتبي</span>
+      </a>
+      <a href="#part2">
+        <strong>المبحث الثاني: المهام والحقوق والواجبات والمسؤولية التأديبية</strong>
+        <span>المطلب الأول: مهام أمناء الضبط</span>
+        <span>المطلب الثاني: الحقوق والواجبات والنظام التأديبي</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- المبحث الأول -->
+<section class="part" id="part1">
+  <div class="sec-head">
+    <div class="eyebrow">المبحث الأول</div>
+    <h2>الإطار المفاهيمي والتنظيمي <em>لأمناء الضبط</em></h2>
+    <p>تحتل أمانة الضبط مكانة مهمة داخل التنظيم القضائي بوصفها جهازاً معاوناً يتولى الأعمال الإدارية والإجرائية اللازمة لسير الجهات القضائية. وقد خصّ المشرّع مستخدميها بتنظيم قانوني يحدد طبيعتهم المهنية وأسلاكهم ورتبهم.</p>
+  </div>
+
+  <div data-tabs>
+    <div class="tablist" role="tablist" aria-label="مطالب المبحث الأول">
+      <button role="tab" id="t1a" aria-controls="p1a" aria-selected="true">المطلب الأول: التعريف ومكانة أمانة الضبط</button>
+      <button role="tab" id="t1b" aria-controls="p1b" aria-selected="false">المطلب الثاني: التصنيف الهيكلي والرتبي</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p1a" aria-labelledby="t1a">
+      <div class="sub" style="margin-top:0">
+        <h3>أولاً: ثلاثة مفاهيم يجب التمييز بينها</h3>
+        <div class="cols">
+          <div class="col"><h4>أمانة الضبط</h4><p>الجهاز المعاون الذي يتولى الأعمال الكتابية والإدارية والإجرائية: متابعة الملفات والسجلات، حفظ الوثائق، والمساهمة في تنفيذ إجراءات الدعاوى والجلسات.</p></div>
+          <div class="col"><h4>مستخدمو أمانات الضبط</h4><p>مجموع الموظفين المنتمين إلى أسلاك هذا الجهاز. وهي التسمية التي اعتمدها المرسوم 08-409 وحافظ عليها المرسوم 26-308.</p></div>
+          <div class="col"><h4>أمين الضبط</h4><p>رتبة محددة ضمن أحد الأسلاك، وليس اسماً لكل الفئة.</p></div>
+        </div>
+        <p class="note">كان هؤلاء الموظفون يُعرفون سابقاً باسم «موظفي كتابات الضبط» بموجب المرسوم التنفيذي 90-231 لسنة 1990.</p>
+      </div>
+
+      <div class="sub">
+        <h3>ثانياً: الطبيعة القانونية</h3>
+        <div class="cols">
+          <div class="col"><h4>موظفون عموميون</h4><p>يخضعون للأمر 06-03 المؤرخ في 15 يوليو 2006 (القانون الأساسي العام للوظيفة العمومية) إضافة إلى أحكام المرسوم 26-308.</p></div>
+          <div class="col"><h4>أماكن العمل <span class="chip">م 2</span></h4><p>الجهات القضائية، والإدارة المركزية لوزارة العدل والمؤسسات العمومية التابعة لها، تحت سلطة رؤساء الجهات القضائية و/أو رؤسائهم السلميين حسب الحالة.</p></div>
+          <div class="col"><h4>اليمين القانونية <span class="chip">م 12</span></h4><p>يؤدونها قبل تولي وظائفهم، تأكيداً لالتزامهم بالأمانة والصدق والمحافظة على السر المهني.</p></div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3>ثالثاً: مكانتها في التنظيم القضائي</h3>
+        <p class="lead-p">تعمل أمانة الضبط إلى جانب القضاة في الجهات القضائية العادية والإدارية، وتوفر الأعمال اللازمة لممارسة الوظيفة القضائية دون أن تتولى الفصل في المنازعات.</p>
+        <div class="cols">
+          <div class="col"><h4>القانون العضوي 22-10</h4><p>المؤرخ في 9 يونيو 2022 والمتعلق بالتنظيم القضائي. تنص المادة 3 على أن النظام القضائي العادي يشمل المحكمة العليا والمجالس القضائية والمحاكم، وتحدد المادة 4 الجهات القضائية الإدارية.</p></div>
+          <div class="col"><h4>قانون الإجراءات المدنية والإدارية 08-09</h4><p>تنص المادة 14 على إيداع عريضة افتتاح الدعوى بأمانة الضبط. وتنص المادة 16 على قيدها في سجل خاص وتسجيل رقم القضية وتاريخ أول جلسة من طرف أمين الضبط.</p></div>
+        </div>
+        <div class="ranks" style="margin-top:1rem">
+          <div class="decree">
+            <header><b>أمانة الضبط</b><small>تسجيل وقيد ومتابعة</small></header>
+            <div class="corps"><p style="margin-top:0">تسجيل الدعاوى وقيدها ومتابعة ملفاتها.</p></div>
+          </div>
+          <div class="decree">
+            <header><b>المحضر القضائي</b><small>م 19 وم 406 إلى 416</small></header>
+            <div class="corps"><p style="margin-top:0">تسليم التكليف بالحضور للخصوم والتبليغ الرسمي، وفق المادة 19 من قانون الإجراءات المدنية والإدارية مع مراعاة المواد 406 إلى 416.</p></div>
           </div>
         </div>
-        <div class="plan-cell">
-          <div class="plan-tag">المبحث الأول</div>
-          <div class="plan-title">التشكيل والاختصاص التشريعي</div>
-          <div class="plan-subs">
-            <div class="plan-sub">ط1: تشكيل البرلمان</div>
-            <div class="plan-sub">ط2: الاختصاص الأصيل</div>
-            <div class="plan-sub">ط3: التشريع بأوامر</div>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p1b" aria-labelledby="t1b" hidden>
+      <div class="sub" style="margin-top:0">
+        <h3>أولاً وثانياً: الأسلاك والرتب بين المرسومين</h3>
+        <p class="lead-p">حافظ المرسوم الجديد على تقسيم المستخدمين إلى سلكين (م 48) لكنه عدّل عدد الرتب وتسمياتها.</p>
+        <div class="ranks">
+          <div class="decree">
+            <header><b>المرسوم 08-409</b><small>24 ديسمبر 2008</small></header>
+            <div class="corps">
+              <h4>سلك أمناء أقسام الضبط <span class="chip">م 37</span> · 3 رتب</h4>
+              <ul class="ladder">
+                <li>أمين قسم ضبط</li>
+                <li>أمين قسم ضبط رئيسي</li>
+                <li>أمين قسم الضبط الرئيسي الأول</li>
+              </ul>
+            </div>
+            <div class="corps">
+              <h4>سلك أمناء الضبط <span class="chip">م 46</span> · 4 رتب</h4>
+              <ul class="ladder">
+                <li class="del">عون أمانة الضبط <span class="flag out">ألغيت كرتبة مستقلة</span></li>
+                <li>معاون أمين ضبط</li>
+                <li>أمين ضبط</li>
+                <li>أمين ضبط رئيسي</li>
+              </ul>
+            </div>
+          </div>
+          <div class="decree new">
+            <header><b>المرسوم 26-308</b><small>22 سبتمبر 2026</small></header>
+            <div class="corps">
+              <h4>سلك أمناء أقسام الضبط <span class="chip">م 49</span> · 4 رتب</h4>
+              <ul class="ladder">
+                <li>أمين قسم ضبط</li>
+                <li class="add">أمين قسم ضبط أول <span class="flag">رتبة جديدة</span></li>
+                <li>أمين قسم ضبط رئيسي</li>
+                <li>أمين قسم ضبط رئيسي أول</li>
+              </ul>
+            </div>
+            <div class="corps">
+              <h4>سلك أمناء الضبط <span class="chip">م 63</span> · 3 رتب</h4>
+              <ul class="ladder">
+                <li>معاون أمين ضبط</li>
+                <li>أمين ضبط</li>
+                <li>أمين ضبط رئيسي</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="plan-cell">
-          <div class="plan-tag">المبحث الثاني</div>
-          <div class="plan-title">الوظيفة الرقابية</div>
-          <div class="plan-subs">
-            <div class="plan-sub">ط1: آليات الرقابة</div>
-            <div class="plan-sub">ط2: ملتمس الرقابة</div>
-            <div class="plan-sub">ط3: تقييم نقدي</div>
-          </div>
+      </div>
+
+      <div class="sub">
+        <h3>التصنيف والأرقام الاستدلالية <span class="chip">م 98</span></h3>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>السلك</th><th>أدنى رتبة</th><th>أعلى رتبة</th></tr></thead>
+            <tbody>
+              <tr><td>أمناء أقسام الضبط</td><td>الصنف <b>13</b> · الرقم الاستدلالي <b>778</b></td><td>الصنف <b>17</b> · الرقم الاستدلالي <b>962</b></td></tr>
+              <tr><td>أمناء الضبط</td><td>الصنف <b>8</b> · الرقم الاستدلالي <b>579</b></td><td>الصنف <b>11</b> · الرقم الاستدلالي <b>698</b></td></tr>
+            </tbody>
+          </table>
         </div>
-        <div class="plan-cell">
-          <div class="plan-tag">خاتمة</div>
-          <div class="plan-title">الإجابة والتقييم النهائي</div>
-          <div class="plan-subs">
-            <div class="plan-sub">تعزيز حقيقي أم رمزي؟</div>
-            <div class="plan-sub">الهوّة بين النص والتفعيل</div>
-            <div class="plan-sub">رهان الديمقراطية</div>
-          </div>
+        <div class="cols">
+          <div class="col"><h4>المناصب العليا <span class="chip">م 79</span></h4><p>قائمة المناصب العليا، مثل رؤساء أمانات ضبط الجهات القضائية والغرف والمصالح المختلفة.</p></div>
+          <div class="col"><h4>الزيادات الاستدلالية <span class="chip">م 99</span></h4><p>تحدد الزيادات المقررة لشاغلي هذه المناصب.</p></div>
         </div>
+      </div>
+
+      <div class="sub">
+        <h3>ثالثاً: أهم التعديلات والأحكام الانتقالية</h3>
+        <div class="cols">
+          <div class="col"><h4>إضافة رتبة</h4><p>رتبة «أمين قسم ضبط أول» في سلك أمناء أقسام الضبط.</p></div>
+          <div class="col"><h4>إلغاء رتبة</h4><p>رتبة «عون أمانة الضبط» بوصفها رتبة مستقلة.</p></div>
+          <div class="col"><h4>الإدماج <span class="chip">م 72 إلى 78</span></h4><p>أحكام انتقالية لإدماج الموظفين في الرتب الجديدة وفق شروط الأقدمية والتكوين.</p></div>
+        </div>
+        <ul class="items one">
+          <li><span class="chip">م 77</span><span>إدماج معاوني أمناء الضبط في رتبة أمين ضبط.</span></li>
+          <li><span class="chip">م 78</span><span>إدماج أعوان أمانة الضبط في رتبة معاون أمين ضبط، بشرط خمس سنوات على الأقل من الخدمة الفعلية، أو متابعة تكوين بنجاح لمن تقل أقدميتهم عن ذلك.</span></li>
+          <li><span class="chip">م 102</span><span>إلغاء أحكام المرسوم 08-409، مع بقاء نصوصه التطبيقية سارية إلى غاية صدور النصوص التطبيقية الجديدة.</span></li>
+        </ul>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- INTRO -->
-  <section id="intro">
-    <div class="wrapper">
-      <div class="sec-eyebrow">مقدمة البحث</div>
-      <h2 class="sec-title">لماذا هذا الموضوع؟</h2>
-      <p class="sec-desc">تأطير الإشكالية وبيان أهمية دراسة دور البرلمان في ظل التعديل الدستوري الجزائري لسنة 2020.</p>
-      <div class="intro-grid">
-        <div class="intro-card">
-          <div class="intro-n">01</div>
-          <div class="intro-title">سياق الحراك الشعبي 2019</div>
-          <div class="intro-body">جاء التعديل الدستوري في سياق سياسي استثنائي أفرزه الحراك الشعبي الأصيل منذ 22 فبراير 2019، مما أعطى لهذه التعديلات طابعاً إصلاحياً مُعلناً يستوجب الفحص والتحليل.</div>
+<!-- المبحث الثاني -->
+<section class="part" id="part2">
+  <div class="sec-head">
+    <div class="eyebrow">المبحث الثاني</div>
+    <h2>المهام والحقوق والواجبات <em>والمسؤولية التأديبية</em></h2>
+    <p>يؤدي مستخدمو أمانات الضبط مهاماً إدارية وإجرائية مرتبطة مباشرة بسير العمل القضائي، مقابل حقوق وضمانات قانونية وواجبات مهنية، مع خضوعهم لنظام تأديبي خاص وعام.</p>
+  </div>
+
+  <div data-tabs>
+    <div class="tablist" role="tablist" aria-label="مطالب المبحث الثاني">
+      <button role="tab" id="t2a" aria-controls="p2a" aria-selected="true">المطلب الأول: المهام</button>
+      <button role="tab" id="t2b" aria-controls="p2b" aria-selected="false">المطلب الثاني: الحقوق والواجبات والتأديب</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p2a" aria-labelledby="t2a">
+      <p class="lead-p" style="margin-bottom:2rem">تختلف المهام بحسب الرتبة وطبيعة المسؤولية المسندة. وقد حددها المرسوم 26-308 بصورة أكثر تفصيلاً من المرسوم السابق.</p>
+      <div class="ranks">
+        <div class="decree new">
+          <header><b>في ظل المرسوم 26-308</b></header>
+          <div class="corps">
+            <ul class="items one">
+              <li><span class="chip">م 50 إلى 53</span><span>مهام رتب سلك أمناء أقسام الضبط.</span></li>
+              <li><span class="chip">م 64 إلى 66</span><span>مهام رتب سلك أمناء الضبط.</span></li>
+            </ul>
+            <p>متابعة الملفات والسجلات والإجراءات القضائية، حضور الجلسات والتحقيقات والمعاينات وتحرير المحاضر، مساعدة القضاة في الأعمال الإجرائية، حفظ الوثائق والأرشيف، ومتابعة نشاط المصالح القضائية بحسب اختصاص كل رتبة.</p>
+          </div>
         </div>
-        <div class="intro-card">
-          <div class="intro-n">02</div>
-          <div class="intro-title">الرهان على التوازن بين السلطات</div>
-          <div class="intro-body">يُعدّ التوازن بين السلطات التشريعية والتنفيذية معياراً أساسياً لتقييم أي نظام ديمقراطي. والسؤال هو: أين تقع كفة البرلمان في هذا التوازن بعد 2020؟</div>
-        </div>
-        <div class="intro-card">
-          <div class="intro-n">03</div>
-          <div class="intro-title">المبادئ الدستورية للتشريع</div>
-          <div class="intro-body">يُجسّد البرلمان مبدأ السيادة الشعبية في الوظيفة التشريعية، غير أن اختصاصه لا يسير دائماً وفق مبدأ الفصل بين السلطات بل يخضع لمنطق التعاون والتوازن.</div>
-        </div>
-        <div class="intro-card">
-          <div class="intro-n">04</div>
-          <div class="intro-title">بين النص والممارسة</div>
-          <div class="intro-body">التحدي الحقيقي ليس في قراءة النص الدستوري بل في تقييم مدى ترجمته إلى ممارسة فعلية، وهو المحور النقدي الذي يُنظّم هذا البحث بأسره.</div>
+        <div class="decree">
+          <header><b>في ظل المرسوم 08-409</b></header>
+          <div class="corps">
+            <ul class="items one">
+              <li><span class="chip">م 38 إلى 40</span><span>مهام سلك أمناء أقسام الضبط.</span></li>
+              <li><span class="chip">م 47 إلى 50</span><span>مهام سلك أمناء الضبط.</span></li>
+            </ul>
+            <p>متابعة الملفات القضائية، مراجعة الأحكام والقرارات مع القاضي بعد رقنها، حضور الجلسات والتحقيقات والمعاينات، مسك السجلات، حفظ أصول الأحكام والوثائق والأرشيف، وتسجيل الدعاوى وتنظيم ملفات المتقاضين، كلٌّ بحسب رتبته.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- MBHATH 1 -->
-  <section id="mbhath1" style="background:var(--white);">
-    <div class="wrapper">
-      <div class="sec-eyebrow">المبحث الأول</div>
-      <h2 class="sec-title">البرلمان في دستور 2020 — التشكيل والاختصاص التشريعي</h2>
-      <p class="sec-desc">يتناول هذا المبحث بنية البرلمان الجزائري ومستجدات تشكيله، ثم اختصاصه التشريعي الأصيل وحدوده.</p>
-
-      <div class="chapter-label"><div class="chapter-num">1</div>المبحث الأول — الشروط العامة المشتركة لقبول الدعوى القضائية</div>
-
-      <div class="acc">
-
-        <!-- ط1 -->
-        <div class="acc-item">
-          <div class="acc-head" onclick="tog(this)">
-            <div class="acc-head-r">
-              <div class="acc-num">1</div>
-              <div>
-                <div class="acc-title">المطلب الأول: تشكيل البرلمان ومستجداته</div>
-                <div class="acc-sub">نظام الغرفتين — الأغلبية البرلمانية — م. 114، 121، 103</div>
-              </div>
-            </div>
-            <div class="acc-arrow">▼</div>
-          </div>
-          <div class="acc-body"><div class="acc-inner">
-            <div class="def-box">
-              <div class="def-label">الفرع الأول — نظام الغرفتين</div>
-              <div class="def-text">أبقى التعديل الدستوري لسنة 2020 على نظام البرلمان ذي الغرفتين، مؤكداً أن كل غرفة تتمتع بالسيادة في إعداد القانون والتصويت عليه.</div>
-            </div>
-            <div class="art-box">
-              <div class="art-label">المادة 114</div>
-              <div class="art-text">يمارس السلطة التشريعية برلمان يتكوّن من غرفتين، وهما المجلس الشعبي الوطني ومجلس الأمة. كل غرفة من غرفتي البرلمان لها السيادة في إعداد القانون والتصويت عليه.</div>
-            </div>
-            <div class="def-box">
-              <div class="def-label">الفرع الثاني — طريقة التشكيل</div>
-              <div class="def-text">يُعيَّن ثلث أعضاء مجلس الأمة من قِبَل رئيس الجمهورية، مما يُثير جدلاً فقهياً حول استقلالية الغرفة الثانية.</div>
-            </div>
-            <div class="art-box">
-              <div class="art-label">المادة 121</div>
-              <div class="art-text">ينتخب أعضاء المجلس الشعبي الوطني عن طريق الاقتراع العام المباشر والسري. ينتخب ثلثا (2/3) أعضاء مجلس الأمة بالاقتراع غير المباشر بمقعدين عن كل ولاية. يعيّن رئيس الجمهورية الثلث (1/3) الآخر من بين الشخصيات والكفاءات الوطنية.</div>
-            </div>
-            <div class="analysis-box">
-              <div class="analysis-label">الفرع الثالث — مستجد الأغلبية البرلمانية (م. 103)</div>
-              <div class="analysis-text">كرّس دستور 2020 مبدأ الأغلبية البرلمانية بوصفه محدداً لطبيعة الحكومة؛ فإذا أسفرت الانتخابات عن أغلبية رئاسية قادها وزير أول، وإذا أسفرت عن أغلبية برلمانية قادها رئيس حكومة. وهذا تقنين لفكرة التعايش السياسي المحتمل، غير أنه يبقى نظرياً ما لم تُفرز الانتخابات أغلبية مستقلة حقاً.</div>
-            </div>
-            <div class="badges">
-              <span class="badge badge-gold">م. 114 — نظام الغرفتين</span>
-              <span class="badge badge-teal">م. 121 — طريقة التشكيل</span>
-              <span class="badge badge-rust">م. 103 — الأغلبية البرلمانية</span>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- ط2 -->
-        <div class="acc-item">
-          <div class="acc-head" onclick="tog(this)">
-            <div class="acc-head-r">
-              <div class="acc-num">2</div>
-              <div>
-                <div class="acc-title">المطلب الثاني: الاختصاص التشريعي الأصيل للبرلمان</div>
-                <div class="acc-sub">المبادرة التشريعية — مسار إقرار القانون — م. 143</div>
-              </div>
-            </div>
-            <div class="acc-arrow">▼</div>
-          </div>
-          <div class="acc-body"><div class="acc-inner">
-            <div class="art-box">
-              <div class="art-label">المادة 143 — المبادرة التشريعية</div>
-              <div class="art-text">لكل من الوزير الأول أو رئيس الحكومة والنواب وأعضاء مجلس الأمة حق المبادرة بالقوانين. تعرض مشاريع القوانين على مجلس الوزراء بعد رأي مجلس الدولة ثم يودعها الوزير الأول لدى مكتب المجلس الشعبي الوطني أو مكتب مجلس الأمة.</div>
-            </div>
-            <div class="analysis-box">
-              <div class="analysis-label">تحليل — ازدواجية المبادرة</div>
-              <div class="analysis-text">تتضح الأسبقية الإجرائية للمبادرة الحكومية؛ إذ تمر بمسار منضبط عبر مجلس الوزراء ومجلس الدولة قبل إيداعها، مما يمنحها ثقلاً عملياً. في المقابل تظل المبادرة البرلمانية رهينة شرط النصاب العددي مما يُضعف التشريع المستقل للنواب.</div>
-            </div>
-            <div class="def-box">
-              <div class="def-label">مسار التشريع الثنائي الغرفة</div>
-              <div class="def-text">يمر كل مشروع أو اقتراح قانون عبر كلتا الغرفتين للمناقشة والتصويت على التوالي حتى تتم المصادقة عليه. هذا المسار يُعدّ ضمانة لجودة التشريع نظرياً، غير أنه عملياً يُرجّح المشاريع الحكومية ذات الأولوية على اقتراحات النواب.</div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- ط3 -->
-        <div class="acc-item">
-          <div class="acc-head" onclick="tog(this)">
-            <div class="acc-head-r">
-              <div class="acc-num">3</div>
-              <div>
-                <div class="acc-title">المطلب الثالث: التشريع بأوامر رئاسية</div>
-                <div class="acc-sub">حدود الاختصاص — م. 142 وضوابطها</div>
-              </div>
-            </div>
-            <div class="acc-arrow">▼</div>
-          </div>
-          <div class="acc-body"><div class="acc-inner">
-            <div class="art-box">
-              <div class="art-label">المادة 142 — التشريع بأوامر</div>
-              <div class="art-text">لرئيس الجمهورية أن يشرّع بأوامر في مسائل عاجلة في حالة شغور المجلس الشعبي الوطني أو خلال العطل البرلمانية، بعد رأي مجلس الدولة. يُخطر رئيس الجمهورية وجوباً المحكمة الدستورية بشأن دستوريتها في أجل أقصاه عشرة أيام. تُعرض على البرلمان في بداية الدورة القادمة، وتُعدّ لاغية الأوامر التي لا يوافق عليها البرلمان.</div>
-            </div>
-            <div class="analysis-box">
-              <div class="analysis-label">موقف الفقه المؤيد</div>
-              <div class="analysis-text">ذهب فريق من الفقه إلى أن دستور 2020 قيّد صلاحية التشريع بأوامر بإخضاعها لرقابة المحكمة الدستورية المسبقة والمصادقة البرلمانية اللاحقة، مع الحكم بلاغيتها عند الرفض.</div>
-            </div>
-            <div class="debate-box">
-              <div class="debate-label">الاتجاه النقدي</div>
-              <div class="debate-text">يرى الاتجاه المعارض أن إمكانية التشريع بأوامر خلال العطل البرلمانية — وهي فترات دورية منتظمة — تبقى ثغرةً تُمكّن السلطة التنفيذية من التحايل على أسبقية البرلمان، ولا سيما أن الموافقة البرلمانية اللاحقة قد تكون محسومة بحكم الأغلبية الموالية.</div>
-            </div>
-          </div></div>
-        </div>
-
+      <div class="digital">
+        <h4>الجديد في المرسوم 26-308: المهام التقنية والرقمية</h4>
+        <p>التعامل مع قواعد البيانات والأنظمة المعلوماتية، المساهمة في تطوير التطبيقات، متابعة وتأمين أرضية التحاضر المرئي، وضمان السير التقني لإجراءات التقاضي عن بعد.</p>
       </div>
+      <p class="note" style="margin-top:2rem">الخلاصة: حافظ المرسوم الجديد على المهام الأساسية لأمانة الضبط، لكنه وسّعها لتشمل الرقمنة والتقاضي عن بعد، بما يساير تطور مرفق العدالة.</p>
     </div>
-  </section>
 
-  <!-- MBHATH 2 -->
-  <section id="mbhath2">
-    <div class="wrapper">
-      <div class="sec-eyebrow">المبحث الثاني</div>
-      <h2 class="sec-title">الوظيفة الرقابية للبرلمان وتقييمها النقدي</h2>
-      <p class="sec-desc">يتناول هذا المبحث آليات رقابة البرلمان على الحكومة في دستور 2020 مع تقييم نقدي لمدى فاعليتها الفعلية.</p>
-
-      <div class="chapter-label"><div class="chapter-num">2</div>المبحث الثاني — الوظيفة الرقابية</div>
-
-      <div class="acc">
-
-        <!-- ط1 -->
-        <div class="acc-item">
-          <div class="acc-head" onclick="tog(this)">
-            <div class="acc-head-r">
-              <div class="acc-num">1</div>
-              <div>
-                <div class="acc-title">المطلب الأول: آليات الرقابة البرلمانية</div>
-                <div class="acc-sub">الأسئلة — لجان التحقيق — م. 158، 159</div>
-              </div>
-            </div>
-            <div class="acc-arrow">▼</div>
-          </div>
-          <div class="acc-body"><div class="acc-inner">
-            <div class="art-box">
-              <div class="art-label">المادة 158 — الأسئلة البرلمانية</div>
-              <div class="art-text">يمكن أعضاء البرلمان توجيه أي سؤال شفوي أو كتابي إلى أي عضو في الحكومة. يكون الجواب عن السؤال الكتابي كتابياً خلال أجل أقصاه ثلاثون (30) يوماً. يعقد كل من المجلسين بالتداول جلسة أسبوعية تخصص لأجوبة الحكومة على الأسئلة الشفوية.</div>
-            </div>
-            <div class="art-box">
-              <div class="art-label">المادة 159 — لجان التحقيق</div>
-              <div class="art-text">يمكن كل غرفة من البرلمان، في إطار اختصاصاتها، أن تُنشئ في أي وقت لجان تحقيق في قضايا ذات مصلحة عامة. لا يمكن إنشاء لجنة تحقيق بخصوص وقائع تكون محل إجراء قضائي.</div>
-            </div>
-            <div class="analysis-box">
-              <div class="analysis-label">تقييم — بين النص والواقع</div>
-              <div class="analysis-text">تُشكّل الجلسة الأسبوعية إضافةً نوعية تُكرّس الحضور الرقابي المنتظم. غير أن لجان التحقيق — رغم أهميتها الدستورية — لم تُوظَّف إلا مرةً واحدة سنة 1997 ولم تُنشر نتائجها، مما يعكس هشاشة هذه الآلية عند مواجهة مقتضيات السلطة التنفيذية.</div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- ط2 -->
-        <div class="acc-item">
-          <div class="acc-head" onclick="tog(this)">
-            <div class="acc-head-r">
-              <div class="acc-num">2</div>
-              <div>
-                <div class="acc-title">المطلب الثاني: ملتمس الرقابة وإسقاط الحكومة</div>
-                <div class="acc-sub">م. 161، 162، 151 — توازن غير متكافئ</div>
-              </div>
-            </div>
-            <div class="acc-arrow">▼</div>
-          </div>
-          <div class="acc-body"><div class="acc-inner">
-            <div class="art-box">
-              <div class="art-label">المادة 161 — شروط الملتمس</div>
-              <div class="art-text">يمكن المجلس الشعبي الوطني لدى مناقشة بيان السياسة العامة أو إثر استجواب أن يصوّت على ملتمس رقابة ينصبّ على مسؤولية الحكومة. لا يُقبل هذا الملتمس إلا إذا وقّعه سُبع (1/7) عدد نواب المجلس على الأقل.</div>
-            </div>
-            <div class="art-box">
-              <div class="art-label">المادة 162 — أثر الملتمس</div>
-              <div class="art-text">تتم الموافقة على ملتمس الرقابة بتصويت أغلبية ثلثي (2/3) النواب. لا يتم التصويت إلا بعد ثلاثة (3) أيام من إيداعه. إذا صادق المجلس على الملتمس، يقدّم الوزير الأول أو رئيس الحكومة استقالة الحكومة إلى رئيس الجمهورية.</div>
-            </div>
-            <div class="debate-box">
-              <div class="debate-label">المادة 151 — حق الحل في المقابل</div>
-              <div class="debate-text">يمكن رئيس الجمهورية أن يقرر حل المجلس الشعبي الوطني أو إجراء انتخابات تشريعية قبل أوانها بعد استشارة رؤساء الغرفتين والمحكمة الدستورية والوزير الأول أو رئيس الحكومة. وهذا ما يخلق لا تكافؤاً بنيوياً: البرلمان يُسقط الحكومة بأغلبية الثلثين، والرئيس يحلّ البرلمان بقرار انفرادي.</div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- ط3 -->
-        <div class="acc-item">
-          <div class="acc-head" onclick="tog(this)">
-            <div class="acc-head-r">
-              <div class="acc-num">3</div>
-              <div>
-                <div class="acc-title">المطلب الثالث: تقييم نقدي</div>
-                <div class="acc-sub">تعزيز حقيقي أم رمزي؟ — مواطن القوة والضعف</div>
-              </div>
-            </div>
-            <div class="acc-arrow">▼</div>
-          </div>
-          <div class="acc-body"><div class="acc-inner">
-            <div class="analysis-box">
-              <div class="analysis-label">مواطن التعزيز الفعلي</div>
-              <div class="analysis-text">لا يمكن إنكار جملة من الإضافات: الاعتراف الصريح بالمعارضة البرلمانية، تقييد التشريع بأوامر وإخضاعه لرقابة المحكمة الدستورية، تكريس مبدأ الأغلبية البرلمانية، الجلسة الأسبوعية للأسئلة الشفوية، الحكم بلاغية الأوامر غير المُصادَق عليها.</div>
-            </div>
-            <div class="pts">
-              <div class="pt"><strong>هيمنة المبادرة الحكومية:</strong> مشاريع القوانين الحكومية تمثل غالبية القوانين المُصادَق عليها.</div>
-              <div class="pt"><strong>تعيين ثلث مجلس الأمة:</strong> يُضعف استقلالية الغرفة الثانية ويُكرّس تبعيتها للسلطة التنفيذية.</div>
-              <div class="pt"><strong>غياب التفعيل التاريخي:</strong> لم يُوظَّف ملتمس الرقابة ولا لجان التحقيق بشكل مؤثر قط.</div>
-              <div class="pt"><strong>صرامة شروط الملتمس:</strong> أغلبية الثلثين تجعله أداةً نظرية معطّلة عملياً.</div>
-              <div class="pt"><strong>لا تكافؤ صلاحية الحل:</strong> الرئيس يحلّ البرلمان بشروط أيسر مما يملكه البرلمان ضد الحكومة.</div>
-            </div>
-          </div></div>
-        </div>
-
+    <div class="panel" role="tabpanel" id="p2b" aria-labelledby="t2b" hidden>
+      <div class="sub" style="margin-top:0">
+        <h3>أولاً: الحقوق والضمانات</h3>
+        <p class="lead-p">يستفيدون من الحقوق الواردة في الأمر 06-03 ومن أحكام المرسوم 26-308، ولا سيما المواد 4 إلى 11 والمادة 33.</p>
+        <ul class="items">
+          <li><span class="chip">م 4 و 5</span><span>ظروف مهنية ومادية تحفظ الكرامة والسلامة، وحماية قانونية من الضغوط والاعتداءات أثناء الخدمة أو بمناسبتها.</span></li>
+          <li><span class="chip">م 6</span><span>مساعدة الدولة عند المتابعة القضائية بسبب خطأ غير متعمد أثناء الخدمة.</span></li>
+          <li><span class="chip">م 7 و 8</span><span>الأوسمة والمكافآت وبعض الامتيازات المهنية.</span></li>
+          <li><span class="chip">م 9</span><span>الراحة التعويضية عند العمل خارج المدة القانونية أو في أيام الراحة.</span></li>
+          <li><span class="chip">م 10 و 11</span><span>البطاقة المهنية والخدمات الاجتماعية والتعاضدية.</span></li>
+          <li><span class="chip">م 33</span><span>التكوين المستمر والتكوين التخصصي لتحسين الكفاءات المهنية.</span></li>
+        </ul>
       </div>
-    </div>
-  </section>
 
-  <!-- CHART -->
-  <div class="chart-section">
-    <div class="chart-wrap">
-      <div class="chart-title">هيكل السلطة التشريعية — دستور 2020</div>
-      <div class="chart-root">البرلمان الجزائري — السلطة التشريعية</div>
-      <div class="chart-v"></div>
-      <div class="chart-row">
-        <div class="chart-branch">
-          <div class="chart-node node-gold">المجلس الشعبي الوطني</div>
-          <div class="chart-leaves">
-            <div class="chart-leaf"><div class="leaf-box">462 نائب — انتخاب مباشر</div></div>
-            <div class="chart-leaf"><div class="leaf-box">المبادرة التشريعية</div></div>
-            <div class="chart-leaf"><div class="leaf-box">ملتمس الرقابة</div></div>
-          </div>
+      <div class="sub">
+        <h3>ثانياً: الواجبات <span class="chip">م 12 إلى 22</span></h3>
+        <ul class="items">
+          <li><span class="chip">م 12</span><span>أداء اليمين القانونية قبل تولي الوظيفة.</span></li>
+          <li><span class="chip">م 13</span><span>الامتناع عن الاحتجاجات الجماعية التي توقف العمل القضائي أو تؤثر على حسن سيره.</span></li>
+          <li><span class="chip">م 14</span><span>السلوك الشريف والنزيه والمحافظة على السر المهني حتى بعد انتهاء المهام.</span></li>
+          <li><span class="chip">م 15</span><span>واجب التحفظ عند استعمال شبكات التواصل الاجتماعي وتكنولوجيات الإعلام والاتصال.</span></li>
+          <li><span class="chip">م 16</span><span>عدم طلب أو قبول الهدايا والامتيازات مقابل أداء العمل أو الامتناع عنه.</span></li>
+          <li><span class="chip">م 17</span><span>إنجاز المهام في الآجال المحددة.</span></li>
+          <li><span class="chip">م 18</span><span>أداء العمل خارج المدة القانونية عند الحاجة، مع حق الراحة التعويضية.</span></li>
+          <li><span class="chip">م 19</span><span>ارتداء البذلة الرسمية خلال الجلسات.</span></li>
+          <li><span class="chip">م 20</span><span>تحسين الكفاءات والمشاركة في برامج التكوين.</span></li>
+          <li><span class="chip">م 21</span><span>التصريح بحالات القرابة أو تعارض المصالح.</span></li>
+          <li><span class="chip">م 22</span><span>الإقامة داخل دائرة الاختصاص الإقليمي للجهة القضائية عند الضرورة إذا سمحت الظروف.</span></li>
+        </ul>
+      </div>
+
+      <div class="sub">
+        <h3>ثالثاً: النظام التأديبي</h3>
+        <div class="cols">
+          <div class="col"><h4>المرجع <span class="chip">م 42</span></h4><p>يخضعون للنظام التأديبي في الأمر 06-03 مع مراعاة الأخطاء المهنية الخاصة التي حددها المرسوم الجديد.</p></div>
+          <div class="col"><h4>الخطأ المهني <span class="chip">م 160 من الأمر 06-03</span></h4><p>كل تخلٍّ عن الواجبات المهنية أو مساس بالانضباط أو مخالفة يرتكبها الموظف أثناء تأدية مهامه أو بمناسبتها. يعرّض صاحبه لعقوبة تأديبية دون المساس بالمتابعات الجزائية عند الاقتضاء.</p></div>
+          <div class="col"><h4>توجيه مباشر <span class="chip">م 43</span></h4><p>يملك النائب العام لدى المجلس القضائي أو محافظ الدولة لدى المحكمة الإدارية للاستئناف، حسب الحالة، توجيه عقوبتي التنبيه أو الإنذار الكتابي عند التقصير في أداء المهام، بمقرر معلل.</p></div>
         </div>
-        <div class="chart-branch">
-          <div class="chart-node node-teal">مجلس الأمة</div>
-          <div class="chart-leaves">
-            <div class="chart-leaf"><div class="leaf-box">ثلثان بانتخاب غير مباشر</div></div>
-            <div class="chart-leaf"><div class="leaf-box">ثلث بتعيين رئاسي</div></div>
-            <div class="chart-leaf"><div class="leaf-box">المصادقة على القوانين</div></div>
-          </div>
+
+        <h4 style="margin-top:2rem;font-family:var(--se);font-size:1.5rem">العقوبات والأخطاء حسب الدرجة <span class="chip">م 163 من الأمر 06-03 وم 44 من المرسوم 26-308</span></h4>
+        <p class="lead-p">اختر درجة لعرض عقوباتها وأخطائها وإجراءات اتخاذها.</p>
+        <div class="degrees" id="degrees" role="group" aria-label="درجات العقوبات التأديبية"></div>
+        <div class="detail" id="detail" aria-live="polite"></div>
+
+        <h4 style="margin-top:2.5rem;font-family:var(--se);font-size:1.5rem">ضمانات الإجراءات التأديبية</h4>
+        <div class="steps">
+          <div class="step"><span class="chip">م 166</span><div class="big">45 يوماً</div><p>أقصى أجل لإخطار المجلس التأديبي من تاريخ معاينة الخطأ، وإلا سقط الخطأ المنسوب إلى الموظف.</p></div>
+          <div class="step"><span class="chip">م 167</span><div class="big">15 يوماً</div><p>مدة اطلاع الموظف على ملفه التأديبي من تحريك الدعوى التأديبية.</p></div>
+          <div class="step"><span class="chip">م 169</span><div class="big">الدفاع</div><p>تقديم الملاحظات والاستعانة بمدافع أو موظف يختاره.</p></div>
+          <div class="step"><span class="chip">م 175</span><div class="big">شهر واحد</div><p>أجل التظلم أمام لجنة الطعن المختصة في عقوبات الدرجتين الثالثة والرابعة، من تاريخ تبليغ القرار.</p></div>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ANSWER -->
-  <div class="answer-section" id="answer">
-    <div class="wrapper" style="padding-top:3rem;padding-bottom:3rem;">
-      <div class="sec-eyebrow">الخاتمة</div>
-      <h2 class="sec-title">الإجابة عن الإشكالية</h2>
-      <div class="answer-card">
-        <div class="answer-head">
-          <div>
-            <div class="answer-head-main">تعزيز حقيقي أم رمزي؟ — الموقف التحليلي النهائي</div>
-            <div class="answer-head-sub">الجواب عن: هل كرّس دستور 2020 استقلالية البرلمان فعلاً؟</div>
-          </div>
-        </div>
-        <div class="answer-body">
-          <p class="answer-para">جاء التعديل الدستوري لسنة 2020 بمستجدات تُعلي نظرياً من شأن السلطة التشريعية وتُوسّع هامشها في النظام السياسي الجزائري. فعلى صعيد التشريع، أُقرّ حق المبادرة البرلمانية، وقُيِّد التشريع بأوامر وأُخضع لرقابة المحكمة الدستورية، وكُرِّس مبدأ الأغلبية البرلمانية. وعلى صعيد الرقابة، نُظِّمت الأسئلة البرلمانية وأُبقي على لجان التحقيق وملتمس الرقابة.</p>
-          <p class="answer-para">غير أن المسافة بين <strong>النص الدستوري</strong> و<strong>الممارسة الفعلية</strong> لا تزال واسعة. فشرط أغلبية الثلثين لملتمس الرقابة، وتعيين ثلث مجلس الأمة، وهيمنة المبادرة الحكومية، ولا تكافؤ صلاحية الحل — كلها عوامل تُبقي السلطة التنفيذية في موقع الريادة.</p>
-          <div class="answer-conclusion">
-            <strong>الموقف التحليلي النهائي:</strong> دستور 2020 <strong>منح البرلمان أدواتٍ</strong> تشريعية ورقابية أوسع نسبياً من ذي قبل، لكنه <strong>لم يُرسّخ استقلاليته الفعلية</strong> في مواجهة السلطة التنفيذية. والهوّة بين الأداة والتفعيل هي رهان الديمقراطية الجزائرية، ولن تُجيب عنها النصوص وحدها بل الممارسة السياسية الناضجة والإرادة المؤسسية الحقيقية.
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- الخاتمة -->
+<section class="part" id="conclusion">
+  <div class="sec-head">
+    <div class="eyebrow">خاتمة</div>
+    <h2>النتائج <em>والتوصيات</em></h2>
+    <p>يشكل مستخدمو أمانات الضبط فئة مهنية أساسية في تنظيم العمل القضائي، فهم الجهاز الذي يتولى الأعمال الإدارية والإجرائية المساعدة للقضاة ويضمن انتظام الإجراءات وحفظ الوثائق والملفات.</p>
   </div>
-
-  <!-- SOURCES -->
-  <section id="sources">
-    <div class="wrapper">
-      <div class="sec-eyebrow">المراجع</div>
-      <h2 class="sec-title">قائمة المراجع المعتمدة</h2>
-      <div class="src-grid">
-        <div class="src-item"><span class="src-n">01</span>دستور الجزائر 2020، الجريدة الرسمية العدد 82، 30 ديسمبر 2020.</div>
-        <div class="src-item"><span class="src-n">02</span>سعيد بوشعير، النظام السياسي الجزائري، ديوان المطبوعات الجامعية.</div>
-        <div class="src-item"><span class="src-n">03</span>عمار عباس، القانون الدستوري والنظم السياسية المقارنة، دار هومة.</div>
-        <div class="src-item"><span class="src-n">04</span>فوزي أوصديق، الوافي في شرح القانون الدستوري الجزائري، ديوان المطبوعات الجامعية.</div>
-        <div class="src-item"><span class="src-n">05</span>إدريس بوكرا، تطور المؤسسات الدستورية في الجزائر، منشورات بغدادي.</div>
-        <div class="src-item"><span class="src-n">06</span>عبد الله بوقفة، أساليب ممارسة السلطة في النظام السياسي الجزائري، دار هومة.</div>
-        <div class="src-item"><span class="src-n">07</span>Maurice Duverger, Institutions politiques et droit constitutionnel, PUF, Paris.</div>
-        <div class="src-item"><span class="src-n">08</span>Georges Vedel, Droit constitutionnel, Sirey, Paris.</div>
-        <div class="src-item"><span class="src-n">09</span>Jean Gicquel, Droit constitutionnel et institutions politiques, LGDJ, Paris.</div>
-        <div class="src-item"><span class="src-n">10</span>مقال: السلطة التشريعية في النظام الجزائري من خلال تعديل 2020، ASJP.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM -->
-  <div class="team-section">
-    <div class="wrapper" style="padding:3rem 2rem;">
-      <div class="sec-eyebrow" style="color:var(--gold);"><span style="background:var(--gold);"></span>الفريق البحثي</div>
-      <h2 class="sec-title" style="color:#fff;">أعضاء الفريق</h2>
-      <div class="team-grid">
-        <div class="tcard main">
-          <div class="tav">DR</div>
-          <div class="tname">Diabi Raouf</div>
-          <div class="trole">باحث — كلية الحقوق</div>
-          <div class="tdesigner">مصمم الموقع</div>
-        </div>
-        <div class="tcard">
-          <div class="tav">MB</div>
-          <div class="tname">Mehdi Mensouri</div>
-          <div class="trole">باحث — كلية الحقوق</div>
-        </div>
-        <div class="tcard">
-          <div class="tav">BA</div>
-          <div class="tname">Boudour Abdelkahar</div>
-          <div class="trole">باحث — كلية الحقوق</div>
-        </div>
-        <div class="tcard">
-          <div class="tav">AB</div>
-          <div class="tname">Adem Bahlouli</div>
-          <div class="trole">باحث — كلية الحقوق</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="foot-main">
+  <div class="band">
+    <div class="two">
       <div>
-        <div class="foot-logo">البحث الدستوري</div>
-        <p class="foot-desc">بحث أكاديمي في مادة القانون الدستوري حول السلطة التشريعية في التعديل الدستوري الجزائري لسنة 2020 — كلية الحقوق — السنة الجامعية 2025/2026.</p>
+        <h3>أهم النتائج</h3>
+        <ol class="list-n">
+          <li>حافظ المشرّع على تقسيم الأسلاك إلى سلكين مع تعديل الرتب وإعادة تصنيفها.</li>
+          <li>وسّع المهام لتشمل الجوانب الرقمية والتقاضي عن بعد.</li>
+          <li>نظّم الحقوق والواجبات والأخطاء المهنية الخاصة.</li>
+          <li>فعالية أمانة الضبط لا تتوقف على النصوص وحدها، بل تتطلب وسائل مادية وتكنولوجية وتكويناً مستمراً وضمان الحقوق والالتزامات.</li>
+        </ol>
       </div>
       <div>
-        <div class="foot-col-h">أقسام الموقع</div>
-        <div class="foot-links">
-          <a href="#intro">مقدمة</a>
-          <a href="#mbhath1">المبحث الأول</a>
-          <a href="#mbhath2">المبحث الثاني</a>
-          <a href="#answer">الخاتمة</a>
-          <a href="#team">الفريق</a>
-        </div>
-      </div>
-      <div>
-        <div class="foot-col-h">المصمم</div>
-        <div class="foot-links">
-          <a href="#">Diabi Raouf</a>
-          <a href="#">كلية الحقوق — الجزائر</a>
-          <a href="#">2026</a>
-        </div>
+        <h3>التوصيات</h3>
+        <ol class="list-n">
+          <li>الإسراع في إصدار النصوص التطبيقية للمرسوم الجديد.</li>
+          <li>تعزيز التكوين في مجال الرقمنة والتقاضي عن بعد.</li>
+          <li>تحسين ظروف العمل بما يرفع كفاءة أمانات الضبط وجودة مرفق العدالة.</li>
+        </ol>
       </div>
     </div>
-    <div class="foot-bottom">
-      <span>جميع الحقوق محفوظة — كلية الحقوق، الجزائر 2026</span>
-      <span>تصميم وتطوير: <strong>Diabi Raouf</strong></span>
-    </div>
-  </footer>
-
-  <!-- MOB MENU -->
-  <div id="mob-menu">
-    <a href="#intro"    onclick="closeMob()">مقدمة</a>
-    <a href="#mbhath1"  onclick="closeMob()">المبحث الأول</a>
-    <a href="#mbhath2"  onclick="closeMob()">المبحث الثاني</a>
-    <a href="#answer"   onclick="closeMob()">الخاتمة</a>
-    <a href="#sources"  onclick="closeMob()">المراجع</a>
-    <a href="#team"     onclick="closeMob()">الفريق</a>
   </div>
+</section>
 
-</div><!-- end #site -->
+<!-- المراجع -->
+<section class="part" id="refs">
+  <div class="sec-head">
+    <div class="eyebrow">قائمة المراجع</div>
+    <h2>النصوص <em>القانونية</em></h2>
+  </div>
+  <ol class="refs">
+    <li>القانون العضوي رقم 22-10 المؤرخ في 9 يونيو 2022، المتعلق بالتنظيم القضائي، الجريدة الرسمية، العدد 41، بتاريخ 16 يونيو 2022.</li>
+    <li>الأمر رقم 06-03 المؤرخ في 15 يوليو 2006، المتضمن القانون الأساسي العام للوظيفة العمومية، الجريدة الرسمية، العدد 46، بتاريخ 16 يوليو 2006.</li>
+    <li>القانون رقم 08-09 المؤرخ في 25 فبراير 2008، المتضمن قانون الإجراءات المدنية والإدارية، المعدل والمتمم بالقانون رقم 22-13 المؤرخ في 12 يوليو 2022.</li>
+    <li>المرسوم التنفيذي رقم 90-231 المؤرخ في 28 يوليو 1990، المتضمن القانون الأساسي الخاص المطبق على موظفي كتابات الضبط للجهات القضائية، الجريدة الرسمية، العدد 32، بتاريخ أول أغسطس 1990.</li>
+    <li>المرسوم التنفيذي رقم 08-409 المؤرخ في 24 ديسمبر 2008، المتضمن القانون الأساسي الخاص بمستخدمي أمانات الضبط للجهات القضائية، الجريدة الرسمية، العدد 73 لسنة 2008.</li>
+    <li>المرسوم التنفيذي رقم 26-308 المؤرخ في 22 سبتمبر 2026، المتضمن القانون الأساسي الخاص بمستخدمي أمانات الضبط للجهات القضائية، الجريدة الرسمية، العدد 70، بتاريخ 7 أكتوبر 2026.</li>
+  </ol>
+</section>
+
+<footer>النظام القانوني لأمناء الضبط · بحث قانوني</footer>
+</div>
+</div>
 
 <script>
-/* ── GATE ── */
-const legalQs = [
-  {q:"ما اسم الغرفتين اللتين يتكون منهما البرلمان الجزائري؟",opts:["مجلس الشيوخ والبرلمان","المجلس الشعبي الوطني ومجلس الأمة","مجلس النواب ومجلس الشعب","المجلس التشريعي ومجلس الدولة"],a:"المجلس الشعبي الوطني ومجلس الأمة",t:"دستوري"},
-  {q:"في أي سنة صدر التعديل الدستوري الأخير في الجزائر؟",opts:["2016","2019","2020","2022"],a:"2020",t:"دستوري"},
-  {q:"ما الأداة الدستورية التي تُتيح للبرلمان إسقاط الحكومة؟",opts:["حق الاعتراض","ملتمس الرقابة","الاستجواب","لجنة التحقيق"],a:"ملتمس الرقابة",t:"دستوري"},
-  {q:"من يعيّن الثلث الأخير من أعضاء مجلس الأمة؟",opts:["رئيس الحكومة","رئيس الجمهورية","رئيس المجلس الشعبي","المحكمة الدستورية"],a:"رئيس الجمهورية",t:"دستوري"},
-  {q:"كم يوماً أجل الجواب على السؤال البرلماني الكتابي؟",opts:["15 يوماً","30 يوماً","45 يوماً","60 يوماً"],a:"30 يوماً",t:"دستوري"},
-];
-const easyQs = [
-  {q:"كم عدد ولايات الجزائر حالياً؟",opts:["48","58","69","75"],a:"69",t:"جغرافيا"},
-  {q:"في أي سنة استقلت الجزائر؟",opts:["1958","1960","1962","1965"],a:"1962",t:"تاريخ"},
-  {q:"ما عاصمة الجزائر؟",opts:["وهران","قسنطينة","الجزائر","سطيف"],a:"الجزائر",t:"جغرافيا"},
-  {q:"ما اللغة الرسمية للجزائر؟",opts:["الفرنسية","الأمازيغية","العربية","العربية والأمازيغية"],a:"العربية",t:"عام"},
-];
-
-let qi=0,wrongs=0,useLegal=true,queue=[...legalQs];
-
-function renderQ(){
-  const q=queue[qi%queue.length];
-  const qt=document.getElementById('qt');
-  qt.classList.add('fade');
-  setTimeout(()=>{
-    document.getElementById('ql').textContent='سؤال '+q.t;
-    document.getElementById('qn').textContent='السؤال '+(qi+1);
-    qt.textContent=q.q; qt.classList.remove('fade');
-    const grid=document.getElementById('qo'); grid.innerHTML='';
-    q.opts.forEach(o=>{
-      const b=document.createElement('button');
-      b.className='opt'; b.textContent=o;
-      b.onclick=()=>answer(o,q.a,b);
-      grid.appendChild(b);
+(function () {
+  /* section tabs */
+  document.querySelectorAll('[data-tabs]').forEach(function (g) {
+    var btns = Array.prototype.slice.call(g.querySelectorAll('[role="tab"]'));
+    var panels = btns.map(function (b) { return g.querySelector('#' + b.getAttribute('aria-controls')); });
+    function sel(i, focus) {
+      btns.forEach(function (b, j) {
+        b.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        b.tabIndex = j === i ? 0 : -1;
+        panels[j].hidden = j !== i;
+      });
+      if (focus) btns[i].focus();
+    }
+    btns.forEach(function (b, i) {
+      b.addEventListener('click', function () { sel(i, false); });
+      b.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); sel((i + 1) % btns.length, true); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); sel((i - 1 + btns.length) % btns.length, true); }
+      });
     });
-    document.getElementById('qe').textContent='';
-  },220);
-}
-
-function answer(val,correct,btn){
-  document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
-  if(val===correct){
-    btn.classList.add('correct');
-    document.getElementById('qp').style.width='100%';
-    setTimeout(()=>{
-      document.getElementById('gate').classList.add('gone');
-      document.getElementById('site').classList.add('show');
-    },650);
-  } else {
-    wrongs++; btn.classList.add('wrong');
-    document.getElementById('qe').textContent='خطأ — الصواب: '+correct;
-    document.getElementById('qp').style.width=Math.min(wrongs*18,85)+'%';
-    if(wrongs>=2&&useLegal){useLegal=false;queue=[...easyQs];qi=0;}
-    else qi++;
-    setTimeout(renderQ,2000);
-  }
-}
-renderQ();
-
-/* ── ACCORDION ── */
-function tog(head){
-  const item=head.parentElement;
-  const body=item.querySelector('.acc-body');
-  const arrow=head.querySelector('.acc-arrow');
-  const isOpen=item.classList.contains('open');
-  const scrollY=window.scrollY;
-  if(isOpen){
-    item.classList.remove('open');
-    body.style.display='none';
-    arrow.textContent='▼';
-    requestAnimationFrame(()=>window.scrollTo(0,scrollY));
-  } else {
-    item.classList.add('open');
-    body.style.display='block';
-    arrow.textContent='▲';
-    requestAnimationFrame(()=>window.scrollTo(0,scrollY));
-  }
-}
-
-/* ── CANVAS ── */
-(function(){
-  const c=document.getElementById('hero-canvas');
-  if(!c)return;
-  const ctx=c.getContext('2d');
-  let W,H,t=0;
-  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
-  resize(); window.addEventListener('resize',resize);
-  // Floating circles / dots
-  const dots=Array.from({length:24},()=>({
-    x:Math.random(),y:Math.random(),
-    r:Math.random()*60+20,
-    speed:Math.random()*.003+.001,
-    phase:Math.random()*Math.PI*2,
-    col:Math.random()>.5?'rgba(56,189,248,':'rgba(14,165,233,'
-  }));
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    t+=.008;
-    dots.forEach(d=>{
-      const x=(d.x+Math.sin(t*d.speed+d.phase)*.06)*W;
-      const y=(d.y+Math.cos(t*d.speed*1.3+d.phase)*.04)*H;
-      const a=.04+.02*Math.sin(t+d.phase);
-      ctx.beginPath();
-      ctx.arc(x,y,d.r,0,Math.PI*2);
-      ctx.strokeStyle=d.col+a+')';
-      ctx.lineWidth=.8;
-      ctx.stroke();
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
-/* ── SMOOTH SCROLL ── */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const el=document.querySelector(a.getAttribute('href'));
-    if(el)el.scrollIntoView({behavior:'smooth'});
+    sel(0, false);
   });
-});
 
-/* ── MOBILE MENU ── */
-function closeMob(){document.getElementById('mob-menu').classList.remove('open');}
+  /* disciplinary degrees */
+  var auth12 = 'السلطة التي لها صلاحية التعيين، بقرار مبرر بعد الحصول على توضيحات كتابية من الموظف (م 165 من الأمر 06-03).';
+  var auth34 = 'السلطة التي لها صلاحية التعيين، بقرار بعد أخذ الرأي الملزم للجنة الإدارية المتساوية الأعضاء المختصة المجتمعة كمجلس تأديبي (م 165 من الأمر 06-03).';
+  var D = [
+    { n: 'الدرجة الأولى',
+      sanctions: ['التنبيه', 'الإنذار الكتابي', 'التوبيخ'],
+      special: [], example: '', who: auth12 },
+    { n: 'الدرجة الثانية',
+      sanctions: ['التوقيف عن العمل من يوم إلى ثلاثة أيام', 'الشطب من قائمة التأهيل'],
+      special: ['التقصير في تشكيل الملفات القضائية', 'عدم إنجاز العمل في الآجال المحددة'],
+      example: '', who: auth12 },
+    { n: 'الدرجة الثالثة',
+      sanctions: ['التوقيف من أربعة إلى ثمانية أيام', 'التنزيل من درجة إلى درجتين', 'النقل الإجباري'],
+      special: ['رفض العمل في الحالات المنصوص عليها في المادة 18', 'القيام بأعمال قد تؤثر على السير الحسن للعمل القضائي والمصالح', 'التقصير في تطبيق الإجراءات القانونية والقضائية', 'عدم احترام الواجبات المنصوص عليها في المادة 14'],
+      example: 'إفشاء السر المهني أو محاولة إفشائه، ورفض تنفيذ تعليمات السلطة السلمية دون مبرر مقبول (م 180 من الأمر 06-03).',
+      who: auth34 },
+    { n: 'الدرجة الرابعة',
+      sanctions: ['التنزيل إلى الرتبة السفلى مباشرة', 'التسريح'],
+      special: ['مخالفة واجبات المادة 15 إذا أدت إلى المساس بواجب التحفظ أو بسمعة القطاع وكرامة مستخدميه', 'التهاون الجسيم في تسيير المحجوزات وأدلة الإقناع أو التسبب في ضياعها أو تلفها', 'المشاركة في الاحتجاج الجماعي أو التحريض عليه إذا أدى إلى توقيف العمل القضائي أو التأثير على حسن سيره'],
+      example: '', who: auth34 }
+  ];
+  var box = document.getElementById('degrees');
+  var det = document.getElementById('detail');
+  function list(items) {
+    return '<ul>' + items.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul>';
+  }
+  function show(i) {
+    Array.prototype.forEach.call(box.children, function (b, j) { b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    var d = D[i];
+    var html = '<div><h4>العقوبات (م 163)</h4>' + list(d.sanctions) + '</div>';
+    html += '<div><h4>الأخطاء الخاصة (م 44)</h4>' + (d.special.length ? list(d.special) : '<p class="dim">لا يورد نص المادة 44 أخطاء خاصة بهذه الدرجة.</p>') + '</div>';
+    if (d.example) html += '<div class="wide"><h4>مثال من الأمر 06-03</h4><p>' + d.example + '</p></div>';
+    html += '<div class="wide"><h4>من يتخذ القرار؟</h4><p>' + d.who + '</p></div>';
+    det.innerHTML = html;
+  }
+  D.forEach(function (d, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    var m = '';
+    for (var k = 0; k < 4; k++) m += '<i class="' + (k <= i ? 'f' : '') + '"></i>';
+    b.innerHTML = '<span class="lbl">' + d.n + '</span><span class="meter" aria-hidden="true">' + m + '</span>';
+    b.addEventListener('click', function () { show(i); });
+    box.appendChild(b);
+  });
+  show(0);
+
+  /* glass navigation: a draggable glass lens over the tabs */
+  var nav = document.getElementById('gnav');
+  var track = document.getElementById('gtrack');
+  var lens = document.getElementById('lens');
+  var tabs = Array.prototype.slice.call(track.querySelectorAll('.gtab'));
+  var ids = tabs.map(function (a) { return a.getAttribute('href').slice(1); });
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cur = 0, x = 0, w = 0, down = false, dragging = false, offset = 0, startX = 0, lockUntil = 0;
+
+  function geo() {
+    var tr = track.getBoundingClientRect();
+    return tabs.map(function (t) { var r = t.getBoundingClientRect(); return { l: r.left - tr.left, w: r.width }; });
+  }
+  function paint() { lens.style.width = w + 'px'; lens.style.setProperty('--x', x + 'px'); }
+  function mark(i) { tabs.forEach(function (t, j) { t.classList.toggle('hot', j === i); }); }
+  function setCurrent(i) {
+    cur = i;
+    tabs.forEach(function (t, j) { if (j === i) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current'); });
+  }
+  function place(i) { var g = geo()[i]; x = g.l; w = g.w; paint(); mark(i); }
+  function nearest(cx) {
+    var L = geo(), b = 0, bd = 1e9;
+    L.forEach(function (g, j) { var d = Math.abs(g.l + g.w / 2 - cx); if (d < bd) { bd = d; b = j; } });
+    return b;
+  }
+  function go(i) {
+    setCurrent(i); place(i);
+    lockUntil = Date.now() + 1100;
+    var s = document.getElementById(ids[i]);
+    if (s) s.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  track.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    var tr = track.getBoundingClientRect(), px = e.clientX - tr.left;
+    down = true; dragging = false; startX = e.clientX;
+    nav.classList.add('press');
+    try { track.setPointerCapture(e.pointerId); } catch (err) {}
+    if (px >= x && px <= x + w) {
+      offset = px - (x + w / 2);
+    } else {
+      offset = 0;
+      var j = nearest(px), g = geo()[j];
+      x = g.l; w = g.w; paint(); mark(j);
+    }
+  });
+  track.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    if (!dragging && Math.abs(e.clientX - startX) > 4) { dragging = true; nav.classList.add('drag'); }
+    if (!dragging) return;
+    var tr = track.getBoundingClientRect(), L = geo(), px = e.clientX - tr.left;
+    var lefts = L.map(function (g) { return g.l; });
+    var min = Math.min.apply(null, lefts), max = Math.max.apply(null, lefts);
+    x = Math.max(min, Math.min(max, px - offset - w / 2));
+    paint(); mark(nearest(x + w / 2));
+  });
+  function end(e, cancelled) {
+    if (!down) return;
+    down = false;
+    nav.classList.remove('press'); nav.classList.remove('drag');
+    if (cancelled) { dragging = false; place(cur); return; }
+    var tr = track.getBoundingClientRect();
+    var i = dragging ? nearest(x + w / 2) : nearest(e.clientX - tr.left);
+    dragging = false;
+    go(i);
+  }
+  track.addEventListener('pointerup', function (e) { end(e, false); });
+  track.addEventListener('pointercancel', function (e) { end(e, true); });
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function (e) { e.preventDefault(); if (e.detail === 0) go(i); });
+  });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting && !down && Date.now() > lockUntil) {
+          var i = ids.indexOf(en.target.id);
+          if (i > -1) { setCurrent(i); place(i); }
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    ids.forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+  }
+  setCurrent(0); place(0);
+  window.addEventListener('resize', function () { place(cur); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { place(cur); });
+})();
 </script>
-</body>
-</html>
+
+</body></html>
